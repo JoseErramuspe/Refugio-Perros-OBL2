@@ -47,6 +47,6 @@ public class Donacion {
     
     @Override
     public String toString() {
-        return this.codigo + ". " + this.empresaDonante.getNombre();
+        return this.codigo + ". " + this.empresaDonante +" - "+this.tipoAlimento+" ("+this.kilos+"kg)";
     }
 }
