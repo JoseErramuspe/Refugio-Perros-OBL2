@@ -3,9 +3,9 @@ package Dominio;
 public class Familia {
     private String cedulaTitular;
     private String apellido;
-    private int celular;
+    private String celular;
 
-    public Familia(String cedulaTitular, String apellido, int celular) {
+    public Familia(String cedulaTitular, String apellido, String celular) {
         this.cedulaTitular = cedulaTitular;
         this.apellido = apellido;
         this.celular = celular;
@@ -27,16 +27,16 @@ public class Familia {
         this.apellido = apellido;
     }
 
-    public int getCelular() {
+    public String getCelular() {
         return celular;
     }
 
-    public void setCelular(int celular) {
+    public void setCelular(String celular) {
         this.celular = celular;
     }
 
     @Override
     public String toString() {
-        return this.apellido;
+        return this.apellido+" ("+this.cedulaTitular+")";
     }
 }
