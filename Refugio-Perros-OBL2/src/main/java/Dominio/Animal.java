@@ -2,12 +2,12 @@ package Dominio;
 
 public class Animal {
     private String nombre;
-    private int codigo;
+    private String codigo;
     private String temperamento;
     private int peso;
     private String estado;
 
-    public Animal(String nombre, int codigo, String temperamento, int peso, String estado) {
+    public Animal(String nombre, String codigo, String temperamento, int peso, String estado) {
         this.nombre = nombre;
         this.codigo = codigo;
         this.temperamento = temperamento;
@@ -18,7 +18,7 @@ public class Animal {
     public void cambiarEstado() {
         if (this.estado.equals("No disponible para adoptar")) {
             this.estado = "Disponible para adoptar";
-        } else if (this.estado.equals("Disponible para adoptar")) {
+        } else {
             this.estado = "No disponible para adoptar";
         }
     }
@@ -31,11 +31,11 @@ public class Animal {
         this.nombre = nombre;
     }
 
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
@@ -65,6 +65,6 @@ public class Animal {
 
     @Override
     public String toString() {
-        return this.nombre;
+        return this.nombre+" ("+this.codigo+")";
     }
 }
