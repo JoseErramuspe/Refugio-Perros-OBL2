@@ -1,7 +1,6 @@
-//www.plantuml.com/plantuml/png/bPHDZjim38NtFeMMdixa0aOHZ86sg-wc5-3OQa1KFuOa5oYAthtsw36Md1yWguGl7qK-aiXhJ1JIR4tJ38PYL6ySaxQa_ZPAgMS9swSrF2YpXDGxjcHqL9tgGw0_tnVnSnQF1VQDB1kc6eDOSb_j57JSSH1BhX_zDB1t-yAGI_IBTtG55VcOlGLzMjH08VVUlgN0xlIYv9DTUbhoVtiUTmbmyK06_BG5AMatCiHNcxjxGSqRj5XhKGWLBXeYDvloRNof8RQJ3ud2DiRs3FoJGybjuKuGxUnT1ZWZv-rxqAg3ciN1ZtpoYxZmMKdQJZgGrIxv7JpfMA4w9Xfhw5aDPDzvcVt7RrSiOAJYuTvMqQ8UPqC_EAr3t7L4apQ6onwGOW2pIrjfh4bA8smV75cOKpc4aOCUreMTiQsWR5egxizBtACSvUrsM6mMVs9UdS3Ryt8gyloTUyJ2ihvoBgs-06BpFFdUC3Q_EVp5naS8zT5WkhZAm-6J_7KrwBNIKApIP2ALA3vkaKSCgDPG4jaGnU2hTkDipNy0
+https://www.plantuml.com/plantuml/png/bLJDJlCm4BpdANnCrVO5eazL8trmubPUO9kOQeL_8jj1GeXt9yQxnJQDAaxWoIopipFYw0EuC6lL30gy5oVqGMeG7uqGOilFTXEVUw5meVS6DIZfHITwv-3zQG7_9V2GqHv1eq8eQGJcl0SzEUah7e4vhn_jDA0rjJ31EVM_DN23ol0XUNFoig0ENDgzFGM7vh8JzKyqOICwyMPnh0R9pShaoX1PQxC_VsU2BRPfqHt9tfbYjoq9aj8lDs1cbMlGBoK9zMHT0FTpsVPA-6oeEsazhixzg_A3ocMiFZifEa8JEDWHBxO2WzIJTA2b2VMdIVe8eGdfBNs0iIHjnG3wZ4iItzzk6A43ivCwvhmOjAKSPmNF6E8fgurWaafXlWEDA2B7NQ_I51PBSrd-U3KtX_m88pevnDYkj2mqofiLwxAn-qeMKjOTnPp05xfRnqESOKmA75f_Om6k52-mtjlyuZ9zZ6GJedrYKq5miht2A5kquHMLzGIKzQ8GgCBxlUL_VGrPAJ0IAp0-N06ocJNcWUvNOYH9qmIomQCquwpL5m00
 
 @startuml
-
 class Sistema {
    + Sistema()
    - listaAnimales : ArrayList<Animal>
@@ -9,19 +8,19 @@ class Sistema {
    - listaEmpresas : ArrayList<Empresa>
    - listaAdopciones : ArrayList<Adopcion>
    - listaDonaciones : ArrayList<Donacion>
-   + registrarAnimal(String, String, int) : void
-   + registrarFamilia(String, String, int) : void
+   + registrarAnimal(String, String, String, int) : void
+   + registrarFamilia(String, String, String) : void
    + registrarEmpresa(String, int, String) : void
-   + registrarAdopcion(Animal,Familia) : void
+   + registrarAdopcion(Animal,Familia, String) : void
    + registrarDonacion(Empresa, int, int) : void
    + anularAdopcion(Adopcion) : void
    + importarDonaciones() : void
 }
 
 class Animal {
-   + Animal(String, int, String, int, String)
+   + Animal(String, String, String, int, String)
    - nombre : String
-   - codigo : int
+   - codigo : String
    - temperamento : String
    - peso : int
    - estado : String
@@ -43,24 +42,25 @@ class Empresa {
 }
 
 class Adopcion {
-   + Adopcion(Animal, Familia)
+   + Adopcion(Animal, Familia, String)
    - animal : Animal
    - familia : Familia
+   - comentarios : String
 }
 
 class Donacion {
-   + Donacion(Empresa, int, int)
+   + Donacion(Empresa, int, int, int)
    - empresaDonante : Empresa
    - tipoAlimento : int
    - kilos : int
    - codigo : int
 }
 
-Animal --* Sistema
-Familia --* Sistema
-Empresa --* Sistema
-Adopcion --* Sistema
-Donacion --* Sistema
+Animal --o Sistema
+Familia --o Sistema
+Empresa --o Sistema
+Adopcion --o Sistema
+Donacion --o Sistema
 Adopcion --> Animal
 Adopcion --> Familia
 Donacion --> Empresa
