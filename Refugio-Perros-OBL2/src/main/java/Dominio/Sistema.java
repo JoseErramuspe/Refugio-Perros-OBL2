@@ -9,16 +9,12 @@ public class Sistema {
     private ArrayList<Adopcion> listaAdopciones;
     private ArrayList<Donacion> listaDonaciones;
     
-    public void registrarAnimal(String nombre, String temperamento, int peso) {
-        int ultCod = -1;
-        for(Animal animal : this.listaAnimales) {
-            ultCod = Math.max(ultCod, animal.getCodigo());
-        }
-        Animal nuevoAnimal = new Animal(nombre, ultCod+1, temperamento, peso, "No disponible para adoptar");
+    public void registrarAnimal(String nombre, String codigo, String temperamento, int peso) {
+        Animal nuevoAnimal = new Animal(nombre, codigo, temperamento, peso, "No disponible para adoptar");
         this.listaAnimales.add(nuevoAnimal);
     }
     
-    public void registrarFamilia(String cedulaTitular, String apellido, int celular) {
+    public void registrarFamilia(String cedulaTitular, String apellido, String celular) {
         Familia nuevaFamilia = new Familia(cedulaTitular, apellido, celular);
         this.listaFamilias.add(nuevaFamilia);
     }
@@ -28,21 +24,23 @@ public class Sistema {
         this.listaEmpresas.add(nuevaEmpresa);
     }
     
-    public void registrarAdopcion(Animal animal, Familia familia) {
-        Adopcion nuevaAdopcion = new Adopcion(animal, familia);
+    public void registrarAdopcion(Animal animal, Familia familia, String comentarios) {
+        Adopcion nuevaAdopcion = new Adopcion(animal, familia, comentarios);
         this.listaAdopciones.add(nuevaAdopcion);
     }
     
     public void registrarDonacion(Empresa empresa, int tipoAlimento, int kilos) {
-        int ultCod = -1;
+        int ultCod = this.listaDonaciones.get(this.listaDonaciones.size()-1).getCodigo();
+        /*int ultCod = 0;
         for(Donacion donacion : this.listaDonaciones) {
             ultCod = Math.max(ultCod, donacion.getCodigo());
-        }
+        }*/
         Donacion nuevaDonacion = new Donacion(empresa, tipoAlimento, kilos, ultCod+1);
         this.listaDonaciones.add(nuevaDonacion);
     }
     
     public void anularAdopcion(Adopcion adopcion) {
+        adopcion.getAnimal().cambiarEstado();
         this.listaAdopciones.remove(adopcion);
     }
 
