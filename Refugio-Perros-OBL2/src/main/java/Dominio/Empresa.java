@@ -2,10 +2,10 @@ package Dominio;
 
 public class Empresa {
     private String nombre;
-    private int rut;
+    private String rut;
     private String direccion;
 
-    public Empresa(String nombre, int rut, String direccion) {
+    public Empresa(String nombre, String rut, String direccion) {
         this.nombre = nombre;
         this.rut = rut;
         this.direccion = direccion;
@@ -19,11 +19,11 @@ public class Empresa {
         this.nombre = nombre;
     }
 
-    public int getRut() {
+    public String getRut() {
         return rut;
     }
 
-    public void setRut(int rut) {
+    public void setRut(String rut) {
         this.rut = rut;
     }
 
