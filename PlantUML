@@ -1,4 +1,4 @@
-https://www.plantuml.com/plantuml/png/bLJDJlCm4BpdANnCrVO5eazL8trmubPUO9kOQeL_8jj1GeXt9yQxnJQDAaxWoIopipFYw0EuC6lL30gy5oVqGMeG7uqGOilFTXEVUw5meVS6DIZfHITwv-3zQG7_9V2GqHv1eq8eQGJcl0SzEUah7e4vhn_jDA0rjJ31EVM_DN23ol0XUNFoig0ENDgzFGM7vh8JzKyqOICwyMPnh0R9pShaoX1PQxC_VsU2BRPfqHt9tfbYjoq9aj8lDs1cbMlGBoK9zMHT0FTpsVPA-6oeEsazhixzg_A3ocMiFZifEa8JEDWHBxO2WzIJTA2b2VMdIVe8eGdfBNs0iIHjnG3wZ4iItzzk6A43ivCwvhmOjAKSPmNF6E8fgurWaafXlWEDA2B7NQ_I51PBSrd-U3KtX_m88pevnDYkj2mqofiLwxAn-qeMKjOTnPp05xfRnqESOKmA75f_Om6k52-mtjlyuZ9zZ6GJedrYKq5miht2A5kquHMLzGIKzQ8GgCBxlUL_VGrPAJ0IAp0-N06ocJNcWUvNOYH9qmIomQCquwpL5m00
+//www.plantuml.com/plantuml/png/XLJB3jCm4BpdAtnCrVO78bGr4d3YLdvWcvXgXH-HxI0XnB-Ju9tYM8curDd9k3ixi-qz9WffjgOP3CMe7XoJjgH-DKgfCyhsj9PNPPQIUiUMZ8wgKtq8zFFB0dx8uAsWVIRBXcbB4x3aVR9JqB7Y2LZo-j5F0tjNDGPSKZzwHpjKmBSyMz2l1GqKilOs7wVboW_FOyKHuQsS1ooHtSfvm8Ba5Wy7FEXjvQ7YaPlDVx-CxUH3el3FalPD-Dr8w7boP2vsF59Wzxge-cINKCXME6-VGQjEq0mEVkINhy2axQG3MUrI_MhISONOfLphc6ZSaivg8FlanUQ_xtO6aNHa4fJxeq3zeCVPq5TEgvkLA9gqCLp8m1Mp9Ry5IF0Y0EMnW4FxmfmgPEIWXpN2dRR87drHoqvVu4JLcNBkdKIUmM_YOOTBo7DDZGBxk2C0wmK1gF5BaBN1X_JN-ULATcbrGDYoB3pvtZ2MvRqPtzduM02oQe8iacIThrUF_wz6HjbWoAh4ODm6n317p1lyAp5nJsu3n81txSRPcZy0
 
 @startuml
 class Sistema {
@@ -8,11 +8,11 @@ class Sistema {
    - listaEmpresas : ArrayList<Empresa>
    - listaAdopciones : ArrayList<Adopcion>
    - listaDonaciones : ArrayList<Donacion>
-   + registrarAnimal(String, String, String, int) : void
-   + registrarFamilia(String, String, String) : void
-   + registrarEmpresa(String, int, String) : void
-   + registrarAdopcion(Animal,Familia, String) : void
-   + registrarDonacion(Empresa, int, int) : void
+   + registrarAnimal(Animal) : void
+   + registrarFamilia(Familia) : void
+   + registrarEmpresa(Empresa) : void
+   + registrarAdopcion(Adopcion) : void
+   + registrarDonacion(Donacion) : void
    + anularAdopcion(Adopcion) : void
    + importarDonaciones() : void
 }
@@ -28,16 +28,16 @@ class Animal {
 }
 
 class Familia {
-   + Familia(String, String, int)
+   + Familia(String, String, String)
    - cedulaTitular : String
    - apellido : String
-   - celular : int
+   - celular : String
 }
 
 class Empresa {
-   + Empresa(String, int, String)
+   + Empresa(String, String, String)
    - nombre : String
-   - rut : int
+   - rut : String
    - direccion : String
 }
 
