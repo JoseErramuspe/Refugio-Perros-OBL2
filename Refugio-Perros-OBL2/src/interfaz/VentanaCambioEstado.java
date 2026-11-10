@@ -1,5 +1,6 @@
 package interfaz;
 import dominio.*;
+import java.awt.Color;
 import java.util.*;
 
 public class VentanaCambioEstado extends javax.swing.JFrame {
@@ -8,8 +9,21 @@ public class VentanaCambioEstado extends javax.swing.JFrame {
 
     public VentanaCambioEstado(Sistema sistema) {
         initComponents();
+        terminoCargar = false;
         modelo = sistema;
         lstAnimales.setListData(this.noEntregados().toArray());
+        for (int i = 0; i < this.noEntregados().size(); i++) {
+            lstAnimales.setSelectedIndex(i);
+            Animal ani = (Animal) lstAnimales.getSelectedValue();
+            if(ani.getEstado().equals("No disponible para adoptar")){
+                lstAnimales.setSelectionBackground(Color.red);
+            }
+            else {
+                lstAnimales.setSelectionBackground(Color.green);
+            }
+        }
+        lstAnimales.clearSelection();
+        terminoCargar = true;
     }
 
     public ArrayList<Animal> noEntregados(){
@@ -72,11 +86,18 @@ public class VentanaCambioEstado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lstAnimalesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstAnimalesValueChanged
-        // TODO add your handling code here:
+        if (terminoCargar) {
+            Animal ani = (Animal) lstAnimales.getSelectedValue();
+            lblNombre.setText("Nombre: "+ani.getNombre());
+            lblCodigo.setText("Código: "+ani.getCodigo());
+            lblTemp.setText("Temperamento: "+ani.getTemperamento());
+            lblPeso.setText("Peso: "+ani.getPeso());
+        }
     }//GEN-LAST:event_lstAnimalesValueChanged
 
     private void btnCambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarActionPerformed
         Animal ani = (Animal) lstAnimales.getSelectedValue();
+        ani.cambiarEstado();
     }//GEN-LAST:event_btnCambiarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -89,4 +110,5 @@ public class VentanaCambioEstado extends javax.swing.JFrame {
     private javax.swing.JList lstAnimales;
     // End of variables declaration//GEN-END:variables
     private Sistema modelo;
+    private boolean terminoCargar;
 }
