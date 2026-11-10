@@ -4,8 +4,9 @@ public class VentanaExitoRegistro extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaExitoRegistro.class.getName());
 
-    public VentanaExitoRegistro() {
+    public VentanaExitoRegistro(String nombre) {
         initComponents();
+        this.jLabel1.setText("¡¡" + nombre.toUpperCase() + " SE REGISTRÓ EXITOSAMENTE!!");
     }
 
     @SuppressWarnings("unchecked")
@@ -20,17 +21,18 @@ public class VentanaExitoRegistro extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("¡¡REGISTRO EXITOSO!!");
+        jLabel1.setText("¡¡SE REGISTRÓ EXITOSAMENTE!!");
+        jLabel1.setAlignmentX(0.5F);
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 80, 400, 90);
+        jLabel1.setBounds(0, 80, 520, 90);
 
         btnVolver.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnVolver.setText("Volver");
         btnVolver.addActionListener(this::btnVolverActionPerformed);
         getContentPane().add(btnVolver);
-        btnVolver.setBounds(120, 210, 160, 50);
+        btnVolver.setBounds(180, 200, 160, 50);
 
-        setBounds(0, 0, 414, 308);
+        setBounds(0, 0, 537, 308);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed

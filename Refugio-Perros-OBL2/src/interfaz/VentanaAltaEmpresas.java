@@ -1,6 +1,7 @@
 package interfaz;
 
 import dominio.*;
+import java.awt.Color;
 
 public class VentanaAltaEmpresas extends javax.swing.JFrame {
 
@@ -26,10 +27,28 @@ public class VentanaAltaEmpresas extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
+
+        fldNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fldNombreKeyTyped(evt);
+            }
+        });
         getContentPane().add(fldNombre);
         fldNombre.setBounds(30, 100, 190, 22);
+
+        fldRut.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fldRutKeyTyped(evt);
+            }
+        });
         getContentPane().add(fldRut);
         fldRut.setBounds(300, 100, 190, 22);
+
+        fldDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fldDireccionKeyTyped(evt);
+            }
+        });
         getContentPane().add(fldDireccion);
         fldDireccion.setBounds(160, 200, 170, 22);
 
@@ -68,33 +87,49 @@ public class VentanaAltaEmpresas extends javax.swing.JFrame {
         String rut = fldRut.getText();
         String direccion = fldDireccion.getText();
         boolean ok = true;
-        if(nombre.equals("")){
+        if(nombre.equals("") || nombre.startsWith("ERROR")){
             fldNombre.setText("ERROR. No puede ser vacío");
+            fldNombre.setForeground(Color.red);
             ok = false;
         }
-        if (rut.equals("")) {
+        if (rut.equals("") || rut.startsWith("ERROR")) {
             fldRut.setText("ERROR. No puede ser vacío");
+            fldRut.setForeground(Color.red);
             ok = false;
         } else {
             for (Empresa emp : modelo.getListaEmpresas()) {
                 if ((emp.getRut().equals(rut))) {
                     fldRut.setText("ERROR. Debe ser único");
+                    fldRut.setForeground(Color.red);
                     ok = false;
                 }
             }
         }
-        if (direccion.equals("")) {
+        if (direccion.equals("") || direccion.startsWith("ERROR")) {
             fldDireccion.setText("ERROR. No puede ser vacío");
+            fldDireccion.setForeground(Color.red);
             ok = false;
         }
         if(ok){
-            VentanaExitoRegistro vent = new VentanaExitoRegistro();
+            VentanaExitoRegistro vent = new VentanaExitoRegistro("EMPRESA");
             vent.setVisible(true);
             Empresa emp = new Empresa(nombre, rut, direccion);
             modelo.agregarEmpresa(emp);
             dispose();
         }
     }//GEN-LAST:event_btnCrearActionPerformed
+
+    private void fldNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fldNombreKeyTyped
+        fldNombre.setForeground(Color.black);
+    }//GEN-LAST:event_fldNombreKeyTyped
+
+    private void fldRutKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fldRutKeyTyped
+        fldRut.setForeground(Color.black);
+    }//GEN-LAST:event_fldRutKeyTyped
+
+    private void fldDireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fldDireccionKeyTyped
+        fldDireccion.setForeground(Color.black);
+    }//GEN-LAST:event_fldDireccionKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCrear;

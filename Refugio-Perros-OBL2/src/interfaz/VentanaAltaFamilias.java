@@ -1,6 +1,7 @@
 package interfaz;
 
 import dominio.*;
+import java.awt.Color;
 
 public class VentanaAltaFamilias extends javax.swing.JFrame {
 
@@ -26,10 +27,28 @@ public class VentanaAltaFamilias extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
+
+        fldCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fldCedulaKeyTyped(evt);
+            }
+        });
         getContentPane().add(fldCedula);
         fldCedula.setBounds(30, 100, 170, 22);
+
+        fldApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fldApellidoKeyTyped(evt);
+            }
+        });
         getContentPane().add(fldApellido);
         fldApellido.setBounds(300, 100, 210, 22);
+
+        fldCelular.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fldCelularKeyTyped(evt);
+            }
+        });
         getContentPane().add(fldCelular);
         fldCelular.setBounds(160, 200, 170, 22);
 
@@ -68,34 +87,50 @@ public class VentanaAltaFamilias extends javax.swing.JFrame {
         String apellido = fldApellido.getText();
         String celular = fldCelular.getText();
         boolean ok = true;
-        if (cedula.equals("")) {
+        if (cedula.equals("") || cedula.startsWith("ERROR")) {
             fldCedula.setText("ERROR. No puede ser vacío");
+            fldCedula.setForeground(Color.red);
             ok = false;
         } else {
             for (Familia fam : modelo.getListaFamilias()) {
                 if ((fam.getCedulaTitular().equals(cedula))) {
                     fldCedula.setText("ERROR. Debe ser única");
+                    fldCedula.setForeground(Color.red);
                     ok = false;
                 }
             }
         }
-        if(apellido.equals("")){
+        if(apellido.equals("") || apellido.startsWith("ERROR")){
             fldApellido.setText("ERROR. No puede ser vacío");
+            fldApellido.setForeground(Color.red);
             ok = false;
         }
-        if (celular.equals("")) {
+        if (celular.equals("") || celular.startsWith("ERROR")) {
             fldCelular.setText("ERROR. No puede ser vacío");
+            fldCelular.setForeground(Color.red);
             ok = false;
         }
-        boolean saltoError = fldApellido.getText().startsWith("ERROR") || fldCedula.getText().startsWith("ERROR") || fldCelular.getText().startsWith("ERROR");
+        
         if(ok){
-            VentanaExitoRegistro vent = new VentanaExitoRegistro();
+            VentanaExitoRegistro vent = new VentanaExitoRegistro("FAMILIA");
             vent.setVisible(true);
             Familia fam = new Familia(cedula, apellido, celular);
             modelo.agregarFamilia(fam);
             dispose();
         }
     }//GEN-LAST:event_btnCrearActionPerformed
+
+    private void fldCedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fldCedulaKeyTyped
+        fldCedula.setForeground(Color.black);
+    }//GEN-LAST:event_fldCedulaKeyTyped
+
+    private void fldApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fldApellidoKeyTyped
+        fldApellido.setForeground(Color.black);
+    }//GEN-LAST:event_fldApellidoKeyTyped
+
+    private void fldCelularKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fldCelularKeyTyped
+        fldCelular.setForeground(Color.black);
+    }//GEN-LAST:event_fldCelularKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCrear;

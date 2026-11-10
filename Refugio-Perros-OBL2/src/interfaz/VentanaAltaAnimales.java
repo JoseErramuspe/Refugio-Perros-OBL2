@@ -154,7 +154,7 @@ public class VentanaAltaAnimales extends javax.swing.JFrame {
             ok = false;
         }
         if(ok){
-            VentanaExitoRegistro vent = new VentanaExitoRegistro();
+            VentanaExitoRegistro vent = new VentanaExitoRegistro("ANIMAL");
             vent.setVisible(true);
             Animal ani = new Animal(codigo, nombre, temp, peso, "Disponible para adoptar");
             if(rdNoDisp.isSelected()){

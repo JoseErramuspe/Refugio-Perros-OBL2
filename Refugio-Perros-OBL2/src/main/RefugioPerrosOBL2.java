@@ -8,7 +8,13 @@ public class RefugioPerrosOBL2 {
         Sistema sistema = new Sistema();
         sistema.agregarAnimal(new Animal("Juan","123","Bueno",12,"Disponible"));
         sistema.agregarAnimal(new Animal("Maria","124","Mala",121232453,"No disponible"));
-        VentanaCambioEstado vent = new VentanaCambioEstado(sistema);
-        vent.setVisible(true);
+        VentanaCambioEstado vent1 = new VentanaCambioEstado(sistema);
+        VentanaAltaAnimales vent2 = new VentanaAltaAnimales(sistema);
+        VentanaAltaEmpresas vent3 = new VentanaAltaEmpresas(sistema);
+        VentanaAltaFamilias vent4 = new VentanaAltaFamilias(sistema);
+        vent1.setVisible(true);
+        vent2.setVisible(true);
+        vent3.setVisible(true);
+        vent4.setVisible(true);
     }
 }
