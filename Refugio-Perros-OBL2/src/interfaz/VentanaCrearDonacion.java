@@ -1,14 +1,21 @@
 package interfaz;
 import dominio.*;
 import java.awt.Color;
+import java.util.*;
 
-public class VentanaCrearDonacion extends javax.swing.JFrame {
+public class VentanaCrearDonacion extends javax.swing.JFrame implements Observer{
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaCrearDonacion.class.getName());
 
     public VentanaCrearDonacion(Sistema sistema) {
         initComponents();
         modelo = sistema;
+        modelo.addObserver(this);
+        lstEmpresas.setListData(modelo.getListaEmpresas().toArray());
+    }
+    
+    @Override
+    public void update(Observable o, Object arg) {
         lstEmpresas.setListData(modelo.getListaEmpresas().toArray());
     }
 
