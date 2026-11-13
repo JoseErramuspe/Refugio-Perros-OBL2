@@ -5,10 +5,14 @@
         <group>
             <file>file:/C:/Users/damia/Documents/NetBeansProjects/Refugio-Perros-OBL2/src/main/RefugioPerrosOBL2.java</file>
             <file>file:/C:/Users/damia/Documents/NetBeansProjects/Refugio-Perros-OBL2/src/interfaz/VentanaAltaAnimales.java</file>
-            <file>file:/C:/Users/damia/Documents/NetBeansProjects/Refugio-Perros-OBL2/src/interfaz/VentanaExitoRegistro.java</file>
             <file>file:/C:/Users/damia/Documents/NetBeansProjects/Refugio-Perros-OBL2/src/interfaz/VentanaAltaFamilias.java</file>
             <file>file:/C:/Users/damia/Documents/NetBeansProjects/Refugio-Perros-OBL2/src/interfaz/VentanaAltaEmpresas.java</file>
             <file>file:/C:/Users/damia/Documents/NetBeansProjects/Refugio-Perros-OBL2/src/interfaz/VentanaCambioEstado.java</file>
+            <file>file:/C:/Users/damia/Documents/NetBeansProjects/Refugio-Perros-OBL2/src/interfaz/VentanaCrearAdopcion.java</file>
+            <file>file:/C:/Users/damia/Documents/NetBeansProjects/Refugio-Perros-OBL2/src/dominio/Sistema.java</file>
+            <file>file:/C:/Users/damia/Documents/NetBeansProjects/Refugio-Perros-OBL2/src/dominio/Adopcion.java</file>
+            <file>file:/C:/Users/damia/Documents/NetBeansProjects/Refugio-Perros-OBL2/src/interfaz/VentanaCrearDonacion.java</file>
+            <file>file:/C:/Users/damia/Documents/NetBeansProjects/Refugio-Perros-OBL2/src/dominio/Donacion.java</file>
         </group>
     </open-files>
 </project-private>

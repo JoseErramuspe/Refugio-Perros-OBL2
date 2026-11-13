@@ -1,8 +1,8 @@
 package dominio;
 
-import java.util.ArrayList;
+import java.util.*;
 
-public class Sistema {
+public class Sistema extends Observable{
 
     private ArrayList<Animal> listaAnimales;
     private ArrayList<Familia> listaFamilias;
@@ -62,5 +62,10 @@ public class Sistema {
     public void anularAdopcion(Adopcion adopcion) {
         adopcion.getAnimal().cambiarEstado();
         this.listaAdopciones.remove(adopcion);
+    }
+    
+    public void notificarObs(){
+        setChanged();
+        notifyObservers();
     }
 }

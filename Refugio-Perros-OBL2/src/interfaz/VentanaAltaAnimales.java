@@ -123,25 +123,25 @@ public class VentanaAltaAnimales extends javax.swing.JFrame {
         String temp = fldTemp.getText();
         int peso = 0;
         boolean ok = true;
-        if (codigo.equals("") || codigo.startsWith("ERROR")) {
+        if (codigo.equals("") || codigo.equals("ERROR. No puede ser vacío")) {
             fldCodigo.setText("ERROR. No puede ser vacío");
             fldCodigo.setForeground(Color.red);
             ok = false;
         } else {
             for (Animal ani : modelo.getListaAnimales()) {
-                if ((ani.getCodigo().equals(codigo))) {
+                if ((ani.getCodigo().equals(codigo)) || codigo.equals("ERROR. Debe ser único")) {
                     fldCodigo.setText("ERROR. Debe ser único");
                     fldCodigo.setForeground(Color.red);
                     ok = false;
                 }
             }
         }
-        if(nombre.equals("") || nombre.startsWith("ERROR")){
+        if(nombre.equals("") || nombre.equals("ERROR. No puede ser vacío")){
             fldNombre.setText("ERROR. No puede ser vacío");
             fldNombre.setForeground(Color.red);
             ok = false;
         }
-        if (temp.equals("") || temp.startsWith("ERROR")) {
+        if (temp.equals("") || temp.equals("ERROR. No puede ser vacío")) {
             fldTemp.setText("ERROR. No puede ser vacío");
             fldTemp.setForeground(Color.red);
             ok = false;
@@ -156,7 +156,7 @@ public class VentanaAltaAnimales extends javax.swing.JFrame {
         if(ok){
             VentanaExitoRegistro vent = new VentanaExitoRegistro("ANIMAL");
             vent.setVisible(true);
-            Animal ani = new Animal(codigo, nombre, temp, peso, "Disponible para adoptar");
+            Animal ani = new Animal(nombre, codigo, temp, peso, "Disponible para adoptar");
             if(rdNoDisp.isSelected()){
                 ani.cambiarEstado();
             }
@@ -169,6 +169,7 @@ public class VentanaAltaAnimales extends javax.swing.JFrame {
             fldNombre.setText("");
             fldTemp.setText("");
             fldPeso.setText("");
+            modelo.notificarObs();
         }
     }//GEN-LAST:event_btnCrearActionPerformed
 
