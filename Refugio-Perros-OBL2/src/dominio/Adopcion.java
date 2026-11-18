@@ -4,11 +4,13 @@ public class Adopcion {
     private Animal animal;
     private Familia familia;
     private String comentarios;
+    private int numero;
 
-    public Adopcion(Animal animal, Familia familia, String comentarios) {
+    public Adopcion(Animal animal, Familia familia, String comentarios, int numero) {
         this.animal = animal;
         this.familia = familia;
         this.comentarios = comentarios;
+        this.numero = numero;
     }
 
     public Animal getAnimal() {
@@ -34,6 +36,16 @@ public class Adopcion {
     public void setComentarios(String comentarios) {
         this.comentarios = comentarios;
     }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+    
+    
 
     @Override
     public String toString() {

@@ -2,6 +2,7 @@ package interfaz;
 
 import dominio.*;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 public class VentanaAltaEmpresas extends javax.swing.JFrame {
 
@@ -87,18 +88,18 @@ public class VentanaAltaEmpresas extends javax.swing.JFrame {
         String rut = fldRut.getText();
         String direccion = fldDireccion.getText();
         boolean ok = true;
-        if(nombre.equals("") || nombre.startsWith("ERROR")){
+        if(nombre.equals("") || nombre.equals("ERROR. No puede ser vacío")){
             fldNombre.setText("ERROR. No puede ser vacío");
             fldNombre.setForeground(Color.red);
             ok = false;
         }
-        if (rut.equals("") || rut.startsWith("ERROR")) {
+        if (rut.equals("") || rut.equals("ERROR. No puede ser vacío")) {
             fldRut.setText("ERROR. No puede ser vacío");
             fldRut.setForeground(Color.red);
             ok = false;
         } else {
             for (Empresa emp : modelo.getListaEmpresas()) {
-                if ((emp.getRut().equals(rut))) {
+                if ((emp.getRut().equals(rut)) || rut.equals("ERROR. Debe ser único")) {
                     fldRut.setText("ERROR. Debe ser único");
                     fldRut.setForeground(Color.red);
                     ok = false;
@@ -111,11 +112,13 @@ public class VentanaAltaEmpresas extends javax.swing.JFrame {
             ok = false;
         }
         if(ok){
-            VentanaExitoRegistro vent = new VentanaExitoRegistro("EMPRESA");
-            vent.setVisible(true);
             Empresa emp = new Empresa(nombre, rut, direccion);
             modelo.agregarEmpresa(emp);
-            dispose();
+            modelo.notificarObs();
+            JOptionPane.showMessageDialog(this,"¡¡Empresa registrada con éxito!!","REGISTRO",1);
+        }
+        else {
+            JOptionPane.showMessageDialog(this,"Algún campo no es válido","ERROR",0);
         }
     }//GEN-LAST:event_btnCrearActionPerformed
 

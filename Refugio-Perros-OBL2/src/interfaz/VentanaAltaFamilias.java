@@ -2,6 +2,7 @@ package interfaz;
 
 import dominio.*;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 public class VentanaAltaFamilias extends javax.swing.JFrame {
 
@@ -87,36 +88,38 @@ public class VentanaAltaFamilias extends javax.swing.JFrame {
         String apellido = fldApellido.getText();
         String celular = fldCelular.getText();
         boolean ok = true;
-        if (cedula.equals("") || cedula.startsWith("ERROR")) {
+        if (cedula.equals("") || cedula.equals("ERROR. No puede ser vacío")) {
             fldCedula.setText("ERROR. No puede ser vacío");
             fldCedula.setForeground(Color.red);
             ok = false;
         } else {
             for (Familia fam : modelo.getListaFamilias()) {
-                if ((fam.getCedulaTitular().equals(cedula))) {
+                if ((fam.getCedulaTitular().equals(cedula)) || cedula.equals("ERROR. Debe ser única")) {
                     fldCedula.setText("ERROR. Debe ser única");
                     fldCedula.setForeground(Color.red);
                     ok = false;
                 }
             }
         }
-        if(apellido.equals("") || apellido.startsWith("ERROR")){
+        if(apellido.equals("") || apellido.equals("ERROR. No puede ser vacío")){
             fldApellido.setText("ERROR. No puede ser vacío");
             fldApellido.setForeground(Color.red);
             ok = false;
         }
-        if (celular.equals("") || celular.startsWith("ERROR")) {
+        if (celular.equals("") || celular.equals("ERROR. No puede ser vacío")) {
             fldCelular.setText("ERROR. No puede ser vacío");
             fldCelular.setForeground(Color.red);
             ok = false;
         }
         
         if(ok){
-            VentanaExitoRegistro vent = new VentanaExitoRegistro("FAMILIA");
-            vent.setVisible(true);
             Familia fam = new Familia(cedula, apellido, celular);
             modelo.agregarFamilia(fam);
-            dispose();
+            modelo.notificarObs();
+            JOptionPane.showMessageDialog(this,"¡¡Familia registrada con éxito!!","REGISTRO",1);
+        }
+        else {
+            JOptionPane.showMessageDialog(this,"Algún campo no es válido","ERROR",0);
         }
     }//GEN-LAST:event_btnCrearActionPerformed
 

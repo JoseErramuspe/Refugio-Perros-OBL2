@@ -1,8 +1,9 @@
 package interfaz;
 
 import dominio.*;
-import java.awt.Color;
+import java.awt.*;
 import java.util.*;
+import javax.swing.*;
 
 public class VentanaCambioEstado extends javax.swing.JFrame implements Observer {
 
@@ -10,20 +11,28 @@ public class VentanaCambioEstado extends javax.swing.JFrame implements Observer 
 
     public VentanaCambioEstado(Sistema sistema) {
         initComponents();
-        terminoCargar = false;
         modelo = sistema;
         lstAnimales.setListData(this.noEntregados().toArray());
-        /*for (int i = 0; i < this.noEntregados().size(); i++) {
-            lstAnimales.setSelectedIndex(i);
-            Animal ani = (Animal) lstAnimales.getSelectedValue();
-            if (ani.getEstado().equals("No disponible para adoptar")) {
-                lstAnimales.setSelectionBackground(Color.red);
-            } else {
-                lstAnimales.setSelectionBackground(Color.green);
+        lstAnimales.setCellRenderer(new DefaultListCellRenderer() {
+            @Override
+            public Component getListCellRendererComponent(
+                    JList<?> list, Object value, int index,
+                    boolean isSelected, boolean cellHasFocus) {
+
+                Component c = super.getListCellRendererComponent(
+                        list, value, index, isSelected, cellHasFocus);
+
+                Animal ani = (Animal) value;
+
+                if (ani.getEstado().equals("Disponible para adoptar")) {
+                    c.setBackground(Color.GREEN);
+                } else {
+                    c.setBackground(Color.RED);
+                }
+
+                return c;
             }
-        }
-        lstAnimales.clearSelection();*/
-        terminoCargar = true;
+        });
         modelo.addObserver(this);
     }
 
@@ -40,6 +49,26 @@ public class VentanaCambioEstado extends javax.swing.JFrame implements Observer 
     @Override
     public void update(Observable o, Object arg) {
         lstAnimales.setListData(this.noEntregados().toArray());
+        lstAnimales.setCellRenderer(new DefaultListCellRenderer() {
+            @Override
+            public Component getListCellRendererComponent(
+                    JList<?> list, Object value, int index,
+                    boolean isSelected, boolean cellHasFocus) {
+
+                Component c = super.getListCellRendererComponent(
+                        list, value, index, isSelected, cellHasFocus);
+
+                Animal ani = (Animal) value;
+
+                if (ani.getEstado().equals("Disponible para adoptar")) {
+                    c.setBackground(Color.GREEN);
+                } else {
+                    c.setBackground(Color.RED);
+                }
+
+                return c;
+            }
+        });
     }
 
     @SuppressWarnings("unchecked")
@@ -103,8 +132,8 @@ public class VentanaCambioEstado extends javax.swing.JFrame implements Observer 
     }// </editor-fold>//GEN-END:initComponents
 
     private void lstAnimalesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstAnimalesValueChanged
-        if (terminoCargar) {
-            Animal ani = (Animal) lstAnimales.getSelectedValue();
+        Animal ani = (Animal) lstAnimales.getSelectedValue();
+        if(ani!= null){
             lblNombre.setText("Nombre: " + ani.getNombre());
             lblCodigo.setText("Código: " + ani.getCodigo());
             lblTemp.setText("Temperamento: " + ani.getTemperamento());
@@ -115,9 +144,18 @@ public class VentanaCambioEstado extends javax.swing.JFrame implements Observer 
 
     private void btnCambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarActionPerformed
         Animal ani = (Animal) lstAnimales.getSelectedValue();
-        if(ani != null){
+        if (ani != null) {
             ani.cambiarEstado();
-            lblEstado.setText("Estado: " + ani.getEstado());
+            lblNombre.setText("Nombre: ");
+            lblCodigo.setText("Código: ");
+            lblTemp.setText("Temperamento: ");
+            lblPeso.setText("Peso: ");
+            lblEstado.setText("Estado: ");
+            modelo.notificarObs();
+            JOptionPane.showMessageDialog(this,"¡¡Cambio exitoso!!", "CAMBIO", 1);
+        }
+        else {
+            JOptionPane.showMessageDialog(this,"No se seleccionó un animal", "ERROR", 0);
         }
     }//GEN-LAST:event_btnCambiarActionPerformed
 
@@ -132,6 +170,5 @@ public class VentanaCambioEstado extends javax.swing.JFrame implements Observer 
     private javax.swing.JList lstAnimales;
     // End of variables declaration//GEN-END:variables
     private Sistema modelo;
-    private boolean terminoCargar;
 
 }

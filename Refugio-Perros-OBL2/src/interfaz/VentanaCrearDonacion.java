@@ -2,6 +2,7 @@ package interfaz;
 import dominio.*;
 import java.awt.Color;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 public class VentanaCrearDonacion extends javax.swing.JFrame implements Observer{
     
@@ -92,18 +93,22 @@ public class VentanaCrearDonacion extends javax.swing.JFrame implements Observer
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
         Empresa emp = (Empresa) lstEmpresas.getSelectedValue();
         String tipo = lstTipos.getSelectedValue();
-        int cant = 0;
         try {
-            cant = Integer.parseInt(fldCant.getText());
+            int cant = Integer.parseInt(fldCant.getText());
             if(emp != null && tipo != null){
                 Donacion don = new Donacion(emp, Integer.parseInt(tipo.charAt(0)+""), cant, modelo.getListaDonaciones().size()+1);
                 modelo.agregarDonacion(don);
                 modelo.notificarObs();
+                JOptionPane.showMessageDialog(this,"¡¡Donación registrada con éxito!!","REGISTRO",1);
+            }
+            else {
+                JOptionPane.showMessageDialog(this,"No se seleccionó empresa y/o tipo","ERROR",0);
             }
         }
         catch (NumberFormatException e){
             fldCant.setText("ERROR. No puede tener letras o ser vacío");
             fldCant.setForeground(Color.red);
+            JOptionPane.showMessageDialog(this,"Hay letras en el campo de cantidad o es vacío","ERROR",0);
         }
         
     }//GEN-LAST:event_btnCrearActionPerformed

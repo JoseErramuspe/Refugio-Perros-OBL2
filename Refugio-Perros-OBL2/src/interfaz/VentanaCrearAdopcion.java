@@ -2,6 +2,7 @@ package interfaz;
 
 import dominio.*;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 public class VentanaCrearAdopcion extends javax.swing.JFrame implements Observer {
 
@@ -104,11 +105,13 @@ public class VentanaCrearAdopcion extends javax.swing.JFrame implements Observer
         Familia fam = (Familia) lstFamilias.getSelectedValue();
         String com = fldComen.getText();
         if(ani != null && fam != null){
-            Adopcion adop = new Adopcion(ani,fam,com);
+            Adopcion adop = new Adopcion(ani,fam,com,modelo.getListaAdopciones().size()+1);
             modelo.agregarAdopcion(adop);
             modelo.notificarObs();
-            VentanaExitoRegistro vent = new VentanaExitoRegistro("ADOPCIÓN");
-            vent.setVisible(true);
+            JOptionPane.showMessageDialog(this,"¡¡Adopción registrada con éxito!!","REGISTRO",1);
+        }
+        else {
+            JOptionPane.showMessageDialog(this,"No se seleccionó animal y/o familia","ERROR",0);
         }
     }//GEN-LAST:event_btnCrearActionPerformed
 

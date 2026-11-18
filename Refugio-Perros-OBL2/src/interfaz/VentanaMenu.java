@@ -37,63 +37,45 @@ public class VentanaMenu extends javax.swing.JFrame {
         botonRegistrarFamilia = new javax.swing.JButton();
         botonRegistrarAdopcion = new javax.swing.JButton();
         botonRegistrarDonacion = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("HOGAR ANIMALES");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(116, 6, 163, 25);
 
         botonRegistrarAnimal.setText("Registrar Animal");
         botonRegistrarAnimal.addActionListener(this::botonRegistrarAnimalActionPerformed);
+        getContentPane().add(botonRegistrarAnimal);
+        botonRegistrarAnimal.setBounds(6, 69, 146, 23);
 
         botonRegistrarEmpresa.setLabel("Registrar Empresa");
         botonRegistrarEmpresa.addActionListener(this::botonRegistrarEmpresaActionPerformed);
+        getContentPane().add(botonRegistrarEmpresa);
+        botonRegistrarEmpresa.setBounds(6, 110, 146, 23);
 
         botonRegistrarFamilia.setLabel("Registrar Familia");
         botonRegistrarFamilia.addActionListener(this::botonRegistrarFamiliaActionPerformed);
+        getContentPane().add(botonRegistrarFamilia);
+        botonRegistrarFamilia.setBounds(6, 151, 146, 23);
 
         botonRegistrarAdopcion.setLabel("Registrar Adopcion");
         botonRegistrarAdopcion.addActionListener(this::botonRegistrarAdopcionActionPerformed);
+        getContentPane().add(botonRegistrarAdopcion);
+        botonRegistrarAdopcion.setBounds(6, 192, 146, 23);
 
         botonRegistrarDonacion.setLabel("Registrar Donacion");
         botonRegistrarDonacion.addActionListener(this::botonRegistrarDonacionActionPerformed);
+        getContentPane().add(botonRegistrarDonacion);
+        botonRegistrarDonacion.setBounds(6, 233, 146, 23);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(botonRegistrarAdopcion, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-                            .addComponent(botonRegistrarDonacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botonRegistrarFamilia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botonRegistrarEmpresa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botonRegistrarAnimal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(121, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(38, 38, 38)
-                .addComponent(botonRegistrarAnimal)
-                .addGap(18, 18, 18)
-                .addComponent(botonRegistrarEmpresa)
-                .addGap(18, 18, 18)
-                .addComponent(botonRegistrarFamilia)
-                .addGap(18, 18, 18)
-                .addComponent(botonRegistrarAdopcion)
-                .addGap(18, 18, 18)
-                .addComponent(botonRegistrarDonacion)
-                .addContainerGap(52, Short.MAX_VALUE))
-        );
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(this::jButton1ActionPerformed);
+        getContentPane().add(jButton1);
+        jButton1.setBounds(260, 130, 75, 23);
 
         setBounds(0, 0, 414, 316);
     }// </editor-fold>//GEN-END:initComponents
@@ -123,12 +105,18 @@ public class VentanaMenu extends javax.swing.JFrame {
         vent.setVisible(true);
     }//GEN-LAST:event_botonRegistrarDonacionActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        VentanaGeneracionPagina vent = new VentanaGeneracionPagina(modelo);
+        vent.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonRegistrarAdopcion;
     private javax.swing.JButton botonRegistrarAnimal;
     private javax.swing.JButton botonRegistrarDonacion;
     private javax.swing.JButton botonRegistrarEmpresa;
     private javax.swing.JButton botonRegistrarFamilia;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
     private Sistema modelo;
