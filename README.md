@@ -1,6 +1,35 @@
 # Refugio-Perros-OBL2
 
-aca
+Hecho
+-Alta animales
+-Alta familias
+-Alta empresas
+-Realizar adopción
+-Realizar donación
+-Cambio de estado (falta ponerle color a la lista)
+
+Por hacer
+-Menú principal (Pepe)
+-Anular adopción (Pepe)
+-Importar donaciones (Pepe)
+-Consulta de familia (?)
+-Consulta de donaciones (?)
+-Generación de página (Damián)
+-Recuperar datos (Pepe)
+-Autores (Pepe)
+-Salir (?)
+-Video
+
+Orden de facilidad
+-Autores
+-Consulta de donaciones
+-Salir (no es ventana, es una opción del menú principal)
+-Anular adopción
+-Recuperar datos
+-Consulta de familia
+-Menú principal
+-Generación de página
+-Importar donaciones
 
 <img width="1241" height="1755" alt="p2261019O2 v05_pages-to-jpg-0001" src="https://github.com/user-attachments/assets/f50d2cb6-b93e-4a1e-923f-765358d7c517" />
 <img width="1241" height="1755" alt="p2261019O2 v05_pages-to-jpg-0002" src="https://github.com/user-attachments/assets/c4237c40-4a15-431f-b679-edee5f8176e7" />
