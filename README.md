@@ -7,6 +7,9 @@ Hecho
 -Realizar adopción
 -Realizar donación
 -Cambio de estado (falta ponerle color a la lista)
+-Recuperar datos
+-Autores
+-Salir
 
 Por hacer
 -Menú principal (Pepe)
@@ -15,9 +18,6 @@ Por hacer
 -Consulta de familia (?)
 -Consulta de donaciones (?)
 -Generación de página (Damián)
--Recuperar datos (Pepe)
--Autores (Pepe)
--Salir (?)
 -Video
 
 Orden de facilidad
