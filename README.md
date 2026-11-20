@@ -6,10 +6,11 @@ Hecho
 -Alta empresas
 -Realizar adopción
 -Realizar donación
--Cambio de estado (falta ponerle color a la lista)
+-Cambio de estado
 -Recuperar datos
 -Autores
 -Salir
+-Generación de página
 
 Por hacer
 -Menú principal (Pepe)
@@ -17,7 +18,6 @@ Por hacer
 -Importar donaciones (Pepe)
 -Consulta de familia (?)
 -Consulta de donaciones (?)
--Generación de página (Damián)
 -Video
 
 Orden de facilidad
