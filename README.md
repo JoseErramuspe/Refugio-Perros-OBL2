@@ -1,5 +1,7 @@
 # Refugio-Perros-OBL2
 
+El registro de adopciones muestra animales que no están disponibles para adoptar o que ya estan adoptados
+
 Hecho
 -Alta animales
 -Alta familias
@@ -11,14 +13,14 @@ Hecho
 -Autores
 -Salir
 -Generación de página
+-Menú principal
+-Anular adopción
 
 Por hacer
--Menú principal (Pepe)
--Anular adopción (Pepe)
 -Importar donaciones (Pepe)
 -Consulta de familia (?)
 -Consulta de donaciones (?)
--Video
+-Video (Pepe)
 
 Orden de facilidad
 -Autores
