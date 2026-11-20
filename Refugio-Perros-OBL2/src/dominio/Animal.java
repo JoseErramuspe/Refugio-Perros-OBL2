@@ -1,6 +1,8 @@
 package dominio;
 
-public class Animal {
+import java.io.Serializable;
+
+public class Animal implements Serializable {
     private String nombre;
     private String codigo;
     private String temperamento;

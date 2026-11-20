@@ -117,6 +117,7 @@ public class VentanaAltaEmpresas extends javax.swing.JFrame {
             modelo.agregarEmpresa(emp);
             dispose();
         }
+        modelo.notificarObs();
     }//GEN-LAST:event_btnCrearActionPerformed
 
     private void fldNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fldNombreKeyTyped

@@ -1,6 +1,8 @@
 package dominio;
 
-public class Donacion {
+import java.io.Serializable;
+
+public class Donacion implements Serializable {
     private Empresa empresaDonante;
     private int tipoAlimento;
     private int kilos;

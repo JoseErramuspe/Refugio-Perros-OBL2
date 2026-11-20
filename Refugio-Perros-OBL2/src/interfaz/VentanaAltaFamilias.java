@@ -118,6 +118,7 @@ public class VentanaAltaFamilias extends javax.swing.JFrame {
             modelo.agregarFamilia(fam);
             dispose();
         }
+        modelo.notificarObs();
     }//GEN-LAST:event_btnCrearActionPerformed
 
     private void fldCedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fldCedulaKeyTyped

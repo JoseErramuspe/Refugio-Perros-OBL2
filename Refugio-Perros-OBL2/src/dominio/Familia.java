@@ -1,6 +1,8 @@
 package dominio;
 
-public class Familia {
+import java.io.Serializable;
+
+public class Familia implements Serializable {
     private String cedulaTitular;
     private String apellido;
     private String celular;

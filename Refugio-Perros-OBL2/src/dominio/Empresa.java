@@ -1,6 +1,8 @@
 package dominio;
 
-public class Empresa {
+import java.io.Serializable;
+
+public class Empresa implements Serializable {
     private String nombre;
     private String rut;
     private String direccion;

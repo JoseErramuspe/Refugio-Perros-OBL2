@@ -5,12 +5,22 @@
 package interfaz;
 
 import dominio.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.nio.file.*;
+import java.util.Observable;
+import java.util.Observer;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Asus
  */
-public class VentanaMenu extends javax.swing.JFrame {
+public class VentanaMenu extends javax.swing.JFrame implements Observer {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaMenu.class.getName());
 
@@ -20,6 +30,36 @@ public class VentanaMenu extends javax.swing.JFrame {
     public VentanaMenu(Sistema sis) {
         modelo = sis;
         initComponents();
+        modelo.addObserver(this);
+        this.actualizarDatos();
+    }
+    
+    private void guardarDatos() {
+        try {
+            System.out.println("GUARDANDO DATOS");
+            FileOutputStream arch = new FileOutputStream("Datos");
+            ObjectOutputStream out = new ObjectOutputStream(arch);
+            out.writeObject(modelo);
+            out.close();
+        } catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", 0);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", 0);
+        }
+    }
+    
+    private void actualizarDatos() {
+        int[] datos = modelo.datosRefugio();
+        this.TA.setText("Total Animales: " + datos[0]);
+        this.AD.setText("Animales Disponibles: " + datos[1]);
+        this.AND.setText("Animales No Disponibles: " + datos[2]);
+        this.AE.setText("Animales Entregados: " + datos[3]);
+        this.AR.setText("Adopciones Registrados: " + datos[4]);
+        this.ER.setText("Empresas Registradas: " + datos[5]);
+        this.APG.setText("Alimento Para Grandes: " + datos[6] + "kg");
+        this.APC.setText("Alimento Para Chicos: " + datos[7] + "kg");
+        this.APA.setText("Alimento Para Adultos: " + datos[8] + "kg");
+        this.OA.setText("Otros Alimentos: " + datos[9] + "kg");
     }
 
     /**
@@ -37,8 +77,34 @@ public class VentanaMenu extends javax.swing.JFrame {
         botonRegistrarFamilia = new javax.swing.JButton();
         botonRegistrarAdopcion = new javax.swing.JButton();
         botonRegistrarDonacion = new javax.swing.JButton();
+        botonSalir = new javax.swing.JButton();
+        botonCambiarEstados = new javax.swing.JButton();
+        Autores = new javax.swing.JButton();
+        botonRecuperarDatos = new javax.swing.JButton();
+        TA = new javax.swing.JLabel();
+        botonGenerarPagina = new javax.swing.JButton();
+        AD = new javax.swing.JLabel();
+        AND = new javax.swing.JLabel();
+        AR = new javax.swing.JLabel();
+        AE = new javax.swing.JLabel();
+        ER = new javax.swing.JLabel();
+        APG = new javax.swing.JLabel();
+        APC = new javax.swing.JLabel();
+        APA = new javax.swing.JLabel();
+        OA = new javax.swing.JLabel();
+        botonAnularAdopcion = new javax.swing.JButton();
+        botonImportarDonaciones = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(400, 300));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("HOGAR ANIMALES");
@@ -58,24 +124,92 @@ public class VentanaMenu extends javax.swing.JFrame {
         botonRegistrarDonacion.setLabel("Registrar Donacion");
         botonRegistrarDonacion.addActionListener(this::botonRegistrarDonacionActionPerformed);
 
+        botonSalir.setText("Salir");
+        botonSalir.setAlignmentX(0.5F);
+        botonSalir.addActionListener(this::botonSalirActionPerformed);
+
+        botonCambiarEstados.setText("Cambiar Estados");
+        botonCambiarEstados.addActionListener(this::botonCambiarEstadosActionPerformed);
+
+        Autores.setText("Autores");
+        Autores.addActionListener(this::AutoresActionPerformed);
+
+        botonRecuperarDatos.setText("Recuperar Datos");
+        botonRecuperarDatos.addActionListener(this::botonRecuperarDatosActionPerformed);
+
+        TA.setText("Total Animales:");
+
+        botonGenerarPagina.setText("Generar Pagina");
+        botonGenerarPagina.addActionListener(this::botonGenerarPaginaActionPerformed);
+
+        AD.setText("Animales Disponibles:");
+
+        AND.setText("Animales No Disponibles:");
+
+        AR.setText("Adopciones Registradas:");
+
+        AE.setText("Animales Entregados:");
+
+        ER.setText("Empresas Registradas:");
+
+        APG.setText("Alimento Para Grandes:");
+
+        APC.setText("Alimento Para Chicos:");
+
+        APA.setText("Alimento Para Adultos:");
+
+        OA.setText("Otros Alimentos:");
+
+        botonAnularAdopcion.setText("Anular Adopcion");
+        botonAnularAdopcion.addActionListener(this::botonAnularAdopcionActionPerformed);
+
+        botonImportarDonaciones.setText("Importar Donaciones");
+        botonImportarDonaciones.addActionListener(this::botonImportarDonacionesActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(jLabel1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(botonRegistrarAdopcion, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                                    .addComponent(botonRegistrarAnimal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(botonRegistrarEmpresa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(botonRegistrarFamilia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(botonRecuperarDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(botonAnularAdopcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(botonCambiarEstados, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                                    .addComponent(botonRegistrarDonacion, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                                    .addComponent(botonImportarDonaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TA, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(AD, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(AND, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(AR, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(AE, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(ER, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(APG, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(APC, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(APA, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(botonGenerarPagina, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(OA)))
+                        .addGap(163, 163, 163))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(botonRegistrarAdopcion, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-                            .addComponent(botonRegistrarDonacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botonRegistrarFamilia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botonRegistrarEmpresa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botonRegistrarAnimal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(121, Short.MAX_VALUE))
+                        .addComponent(Autores)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,19 +217,53 @@ public class VentanaMenu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(38, 38, 38)
-                .addComponent(botonRegistrarAnimal)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonRegistrarAnimal)
+                    .addComponent(TA))
                 .addGap(18, 18, 18)
-                .addComponent(botonRegistrarEmpresa)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonRegistrarEmpresa)
+                    .addComponent(AD))
                 .addGap(18, 18, 18)
-                .addComponent(botonRegistrarFamilia)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonRegistrarFamilia)
+                    .addComponent(AND))
                 .addGap(18, 18, 18)
-                .addComponent(botonRegistrarAdopcion)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AE)
+                    .addComponent(botonRegistrarDonacion))
                 .addGap(18, 18, 18)
-                .addComponent(botonRegistrarDonacion)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AR)
+                    .addComponent(botonRegistrarAdopcion))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ER)
+                    .addComponent(botonAnularAdopcion))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(APG)
+                    .addComponent(botonCambiarEstados))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(APC)
+                    .addComponent(botonImportarDonaciones))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(APA)
+                    .addComponent(botonRecuperarDatos))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(OA)
+                    .addComponent(botonGenerarPagina))
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonSalir)
+                    .addComponent(Autores))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
-        setBounds(0, 0, 414, 316);
+        setBounds(0, 0, 505, 599);
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonRegistrarAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarAnimalActionPerformed
@@ -123,13 +291,96 @@ public class VentanaMenu extends javax.swing.JFrame {
         vent.setVisible(true);
     }//GEN-LAST:event_botonRegistrarDonacionActionPerformed
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        
+    }//GEN-LAST:event_formWindowClosed
+
+    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+        guardarDatos();
+        System.exit(0);
+    }//GEN-LAST:event_botonSalirActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        guardarDatos();
+    }//GEN-LAST:event_formWindowClosing
+
+    private void botonCambiarEstadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCambiarEstadosActionPerformed
+        VentanaCambioEstado vent = new VentanaCambioEstado(modelo);
+        vent.setVisible(true);
+    }//GEN-LAST:event_botonCambiarEstadosActionPerformed
+
+    private void AutoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AutoresActionPerformed
+        VentanaAutores vent = new VentanaAutores();
+        vent.setVisible(true);
+    }//GEN-LAST:event_AutoresActionPerformed
+
+    private void botonRecuperarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRecuperarDatosActionPerformed
+        if (Files.exists(Path.of("Datos"))) {
+            int cargar = JOptionPane.showConfirmDialog(this, "¿Recuperar datos previamente guardados?", "Confirmacion", 0);
+            if (cargar == JOptionPane.YES_OPTION) {
+                try {
+                    FileInputStream arch = new FileInputStream("Datos");
+                    ObjectInputStream in = new ObjectInputStream(arch);
+                    modelo = (Sistema)in.readObject();
+                    in.close();
+                    JOptionPane.showMessageDialog(this, "Datos recuperados exitosamente!", "Éxito", 1);
+                } catch (FileNotFoundException ex) {
+                    JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", 0);
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", 0);
+                } catch (ClassNotFoundException ex) {
+                    JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", 0);
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "No existen datos guardados previamente", "Error", 0);
+        }
+        this.actualizarDatos();
+    }//GEN-LAST:event_botonRecuperarDatosActionPerformed
+
+    private void botonGenerarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGenerarPaginaActionPerformed
+        VentanaGeneracionPagina vent = new VentanaGeneracionPagina(modelo);
+        vent.setVisible(true);
+    }//GEN-LAST:event_botonGenerarPaginaActionPerformed
+
+    private void botonAnularAdopcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAnularAdopcionActionPerformed
+        VentanaAnularAdopciones vent = new VentanaAnularAdopciones(modelo);
+        vent.setVisible(true);
+    }//GEN-LAST:event_botonAnularAdopcionActionPerformed
+
+    private void botonImportarDonacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonImportarDonacionesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonImportarDonacionesActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AD;
+    private javax.swing.JLabel AE;
+    private javax.swing.JLabel AND;
+    private javax.swing.JLabel APA;
+    private javax.swing.JLabel APC;
+    private javax.swing.JLabel APG;
+    private javax.swing.JLabel AR;
+    private javax.swing.JButton Autores;
+    private javax.swing.JLabel ER;
+    private javax.swing.JLabel OA;
+    private javax.swing.JLabel TA;
+    private javax.swing.JButton botonAnularAdopcion;
+    private javax.swing.JButton botonCambiarEstados;
+    private javax.swing.JButton botonGenerarPagina;
+    private javax.swing.JButton botonImportarDonaciones;
+    private javax.swing.JButton botonRecuperarDatos;
     private javax.swing.JButton botonRegistrarAdopcion;
     private javax.swing.JButton botonRegistrarAnimal;
     private javax.swing.JButton botonRegistrarDonacion;
     private javax.swing.JButton botonRegistrarEmpresa;
     private javax.swing.JButton botonRegistrarFamilia;
+    private javax.swing.JButton botonSalir;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
     private Sistema modelo;
+
+    @Override
+    public void update(Observable o, Object arg) {
+        this.actualizarDatos();
+    }
 }

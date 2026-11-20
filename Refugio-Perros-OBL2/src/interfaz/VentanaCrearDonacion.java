@@ -86,7 +86,7 @@ public class VentanaCrearDonacion extends javax.swing.JFrame implements Observer
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(140, 70, 140, 146);
 
-        setBounds(0, 0, 505, 308);
+        setBounds(0, 0, 505, 330);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
@@ -105,7 +105,7 @@ public class VentanaCrearDonacion extends javax.swing.JFrame implements Observer
             fldCant.setText("ERROR. No puede tener letras o ser vacío");
             fldCant.setForeground(Color.red);
         }
-        
+        modelo.notificarObs();
     }//GEN-LAST:event_btnCrearActionPerformed
 
     private void fldCantKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fldCantKeyTyped

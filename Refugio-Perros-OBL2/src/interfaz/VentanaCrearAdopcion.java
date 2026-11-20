@@ -104,18 +104,22 @@ public class VentanaCrearAdopcion extends javax.swing.JFrame implements Observer
         Familia fam = (Familia) lstFamilias.getSelectedValue();
         String com = fldComen.getText();
         if(ani != null && fam != null){
-            Adopcion adop = new Adopcion(ani,fam,com);
+            Adopcion adop = new Adopcion(ani,fam,com,modelo.getListaAdopciones().size()+1);
+            ani.setEstado("Entregado");
             modelo.agregarAdopcion(adop);
             modelo.notificarObs();
             VentanaExitoRegistro vent = new VentanaExitoRegistro("ADOPCIÓN");
             vent.setVisible(true);
         }
+        modelo.notificarObs();
     }//GEN-LAST:event_btnCrearActionPerformed
 
     private void lstAnimalesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstAnimalesValueChanged
         Animal ani = (Animal) lstAnimales.getSelectedValue();
-        lblTemp.setText("Temperamento: "+ani.getTemperamento());
-        lblPeso.setText("Peso: "+ani.getPeso());
+        if (ani != null) {
+            lblTemp.setText("Temperamento: "+ani.getTemperamento());
+            lblPeso.setText("Peso: "+ani.getPeso());
+        }
     }//GEN-LAST:event_lstAnimalesValueChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -99,17 +99,19 @@ public class VentanaCambioEstado extends javax.swing.JFrame implements Observer 
         getContentPane().add(lblEstado);
         lblEstado.setBounds(200, 210, 450, 30);
 
-        setBounds(0, 0, 717, 379);
+        setBounds(0, 0, 555, 379);
     }// </editor-fold>//GEN-END:initComponents
 
     private void lstAnimalesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstAnimalesValueChanged
         if (terminoCargar) {
             Animal ani = (Animal) lstAnimales.getSelectedValue();
-            lblNombre.setText("Nombre: " + ani.getNombre());
-            lblCodigo.setText("Código: " + ani.getCodigo());
-            lblTemp.setText("Temperamento: " + ani.getTemperamento());
-            lblPeso.setText("Peso: " + ani.getPeso());
-            lblEstado.setText("Estado: " + ani.getEstado());
+            if (ani != null) {
+                lblNombre.setText("Nombre: " + ani.getNombre());
+                lblCodigo.setText("Código: " + ani.getCodigo());
+                lblTemp.setText("Temperamento: " + ani.getTemperamento());
+                lblPeso.setText("Peso: " + ani.getPeso());
+                lblEstado.setText("Estado: " + ani.getEstado());
+            }
         }
     }//GEN-LAST:event_lstAnimalesValueChanged
 
@@ -119,6 +121,7 @@ public class VentanaCambioEstado extends javax.swing.JFrame implements Observer 
             ani.cambiarEstado();
             lblEstado.setText("Estado: " + ani.getEstado());
         }
+        modelo.notificarObs();
     }//GEN-LAST:event_btnCambiarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
