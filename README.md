@@ -15,9 +15,9 @@ Hecho
 -Generación de página
 -Menú principal
 -Anular adopción
+-Importar donaciones
 
 Por hacer
--Importar donaciones (Pepe)
 -Consulta de familia (?)
 -Consulta de donaciones (?)
 -Video (Pepe)
