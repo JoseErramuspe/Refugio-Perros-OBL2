@@ -1,7 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+// José Gabriel Erramuspe Rodríguez - 353422
+// Damián Agustín Torres Aramburu - 371643
 package interfaz;
 
 import dominio.*;
@@ -130,8 +128,8 @@ public class VentanaAnularAdopciones extends javax.swing.JFrame implements Obser
         Adopcion adop = (Adopcion)this.lstAdopciones.getSelectedValue();
         if (adop != null) {
             modelo.anularAdopcion(adop);
-            modelo.notificarObs();
         }
+        modelo.notificarObs();
     }//GEN-LAST:event_botonAnularAdopcionActionPerformed
 
     private void lstAdopcionesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstAdopcionesValueChanged

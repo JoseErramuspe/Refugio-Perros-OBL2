@@ -1,3 +1,5 @@
+// José Gabriel Erramuspe Rodríguez - 353422
+// Damián Agustín Torres Aramburu - 371643
 package interfaz;
 import dominio.*;
 import java.util.*;
@@ -47,7 +49,7 @@ public class VentanaConsultaFamilias extends javax.swing.JFrame implements Obser
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Lista de familias");
+        jLabel1.setText("Lista de Familias");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(50, 30, 180, 40);
 
@@ -61,7 +63,7 @@ public class VentanaConsultaFamilias extends javax.swing.JFrame implements Obser
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(50, 70, 250, 200);
 
-        setBounds(0, 0, 414, 308);
+        setBounds(0, 0, 414, 336);
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

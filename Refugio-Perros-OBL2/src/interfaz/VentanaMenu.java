@@ -1,10 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+// José Gabriel Erramuspe Rodríguez - 353422
+// Damián Agustín Torres Aramburu - 371643
 package interfaz;
 
 import dominio.*;
+import java.awt.Window;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -94,6 +93,8 @@ public class VentanaMenu extends javax.swing.JFrame implements Observer {
         OA = new javax.swing.JLabel();
         botonAnularAdopcion = new javax.swing.JButton();
         botonImportarDonaciones = new javax.swing.JButton();
+        botonConsultarFamilias = new javax.swing.JButton();
+        botonConsultarDonaciones = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(400, 300));
@@ -166,6 +167,12 @@ public class VentanaMenu extends javax.swing.JFrame implements Observer {
         botonImportarDonaciones.setText("Importar Donaciones");
         botonImportarDonaciones.addActionListener(this::botonImportarDonacionesActionPerformed);
 
+        botonConsultarFamilias.setText("Consultar Familias");
+        botonConsultarFamilias.addActionListener(this::botonConsultarFamiliasActionPerformed);
+
+        botonConsultarDonaciones.setText("Consultar Donaciones");
+        botonConsultarDonaciones.addActionListener(this::botonConsultarDonacionesActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -206,10 +213,14 @@ public class VentanaMenu extends javax.swing.JFrame implements Observer {
                                 .addComponent(OA)))
                         .addGap(163, 163, 163))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Autores)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(botonConsultarFamilias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Autores)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(botonConsultarDonaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,13 +268,17 @@ public class VentanaMenu extends javax.swing.JFrame implements Observer {
                     .addComponent(OA)
                     .addComponent(botonGenerarPagina))
                 .addGap(21, 21, 21)
+                .addComponent(botonConsultarFamilias)
+                .addGap(18, 18, 18)
+                .addComponent(botonConsultarDonaciones)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonSalir)
-                    .addComponent(Autores))
-                .addContainerGap(85, Short.MAX_VALUE))
+                    .addComponent(Autores)
+                    .addComponent(botonSalir))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
-        setBounds(0, 0, 505, 599);
+        setBounds(0, 0, 505, 677);
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonRegistrarAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarAnimalActionPerformed
@@ -322,6 +337,12 @@ public class VentanaMenu extends javax.swing.JFrame implements Observer {
                     FileInputStream arch = new FileInputStream("Datos");
                     ObjectInputStream in = new ObjectInputStream(arch);
                     modelo = (Sistema)in.readObject();
+                    modelo.addObserver(this);
+                    for (Window win : Window.getWindows()) {
+                        if (!win.equals(this)) {
+                            win.dispose();
+                        }
+                    }
                     in.close();
                     JOptionPane.showMessageDialog(this, "Datos recuperados exitosamente!", "Éxito", 1);
                 } catch (FileNotFoundException ex) {
@@ -336,6 +357,7 @@ public class VentanaMenu extends javax.swing.JFrame implements Observer {
             JOptionPane.showMessageDialog(this, "No existen datos guardados previamente", "Error", 0);
         }
         this.actualizarDatos();
+        modelo.notificarObs();
     }//GEN-LAST:event_botonRecuperarDatosActionPerformed
 
     private void botonGenerarPaginaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGenerarPaginaActionPerformed
@@ -353,6 +375,17 @@ public class VentanaMenu extends javax.swing.JFrame implements Observer {
         vent.setVisible(true);
     }//GEN-LAST:event_botonImportarDonacionesActionPerformed
 
+    private void botonConsultarFamiliasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarFamiliasActionPerformed
+        VentanaConsultaFamilias vent = new VentanaConsultaFamilias(modelo, true);
+        vent.setVisible(true);
+    }//GEN-LAST:event_botonConsultarFamiliasActionPerformed
+
+    private void botonConsultarDonacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarDonacionesActionPerformed
+        VentanaConsultaDonaciones vent = new VentanaConsultaDonaciones(modelo);
+        vent.setVisible(true);
+        System.out.println("AAA");
+    }//GEN-LAST:event_botonConsultarDonacionesActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AD;
     private javax.swing.JLabel AE;
@@ -367,6 +400,8 @@ public class VentanaMenu extends javax.swing.JFrame implements Observer {
     private javax.swing.JLabel TA;
     private javax.swing.JButton botonAnularAdopcion;
     private javax.swing.JButton botonCambiarEstados;
+    private javax.swing.JButton botonConsultarDonaciones;
+    private javax.swing.JButton botonConsultarFamilias;
     private javax.swing.JButton botonGenerarPagina;
     private javax.swing.JButton botonImportarDonaciones;
     private javax.swing.JButton botonRecuperarDatos;

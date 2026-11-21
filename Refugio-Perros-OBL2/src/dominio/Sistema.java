@@ -1,3 +1,5 @@
+// José Gabriel Erramuspe Rodríguez - 353422
+// Damián Agustín Torres Aramburu - 371643
 package dominio;
 
 import java.io.Serializable;
@@ -30,7 +32,7 @@ public class Sistema extends Observable implements Serializable {
                 datos[1]++;
             } else if (ani.getEstado().equals("No disponible para adoptar")) {
                 datos[2]++;
-            } else {
+            } else if (ani.getEstado().equals("Entregado")) {
                 datos[3]++; // Entregados a familias
             }
         }
@@ -46,6 +48,16 @@ public class Sistema extends Observable implements Serializable {
             }
         }
         return datos;
+    }
+    
+    public ArrayList<Animal> animalesAdoptables() {
+        ArrayList<Animal> adoptables = new ArrayList<>();
+        for (Animal ani : this.listaAnimales) {
+            if (ani.getEstado().equals("Disponible para adoptar")) {
+                adoptables.add(ani);
+            }
+        }
+        return adoptables;
     }
 
     public ArrayList<Animal> getListaAnimales() {

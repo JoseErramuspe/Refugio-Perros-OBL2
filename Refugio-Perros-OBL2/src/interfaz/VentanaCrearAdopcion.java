@@ -1,3 +1,5 @@
+// José Gabriel Erramuspe Rodríguez - 353422
+// Damián Agustín Torres Aramburu - 371643
 package interfaz;
 
 import dominio.*;
@@ -11,13 +13,13 @@ public class VentanaCrearAdopcion extends javax.swing.JFrame implements Observer
         initComponents();
         modelo = sistema;
         modelo.addObserver(this);
-        lstAnimales.setListData(modelo.getListaAnimales().toArray());
+        lstAnimales.setListData(modelo.animalesAdoptables().toArray());
         lstFamilias.setListData(modelo.getListaFamilias().toArray());
     }
 
     @Override
     public void update(Observable o, Object arg) {
-        lstAnimales.setListData(modelo.getListaAnimales().toArray());
+        lstAnimales.setListData(modelo.animalesAdoptables().toArray());
         lstFamilias.setListData(modelo.getListaFamilias().toArray());
     }
 

@@ -1,3 +1,5 @@
+// José Gabriel Erramuspe Rodríguez - 353422
+// Damián Agustín Torres Aramburu - 371643
 package interfaz;
 
 public class VentanaExitoRegistro extends javax.swing.JFrame {

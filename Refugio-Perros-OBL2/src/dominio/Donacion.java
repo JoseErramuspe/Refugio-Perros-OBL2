@@ -1,8 +1,10 @@
+// José Gabriel Erramuspe Rodríguez - 353422
+// Damián Agustín Torres Aramburu - 371643
 package dominio;
 
 import java.io.Serializable;
 
-public class Donacion implements Serializable {
+public class Donacion implements Serializable, Comparable<Donacion> {
     private Empresa empresaDonante;
     private int tipoAlimento;
     private int kilos;
@@ -50,5 +52,10 @@ public class Donacion implements Serializable {
     @Override
     public String toString() {
         return this.codigo + ". " + this.empresaDonante +" - "+this.tipoAlimento+" ("+this.kilos+"kg)";
+    }
+
+    @Override
+    public int compareTo(Donacion o) {
+        return this.codigo - o.getCodigo();
     }
 }

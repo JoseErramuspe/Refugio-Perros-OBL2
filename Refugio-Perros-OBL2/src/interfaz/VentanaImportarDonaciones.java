@@ -1,3 +1,5 @@
+// José Gabriel Erramuspe Rodríguez - 353422
+// Damián Agustín Torres Aramburu - 371643
 package interfaz;
 
 import dominio.*;
@@ -79,27 +81,35 @@ public class VentanaImportarDonaciones extends javax.swing.JFrame {
             String rutaArchivoErrores = "";
             while (arch.hayMasLineas()) {
                 linea++;
-                String lineaError = linea + ":\n";
+                String lineaError = "Linea " + linea + ":\n";
                 boolean hayError = false;
                 String[] datos = arch.linea().split("#");
-                if (datos.length != 3) {
+                try {
+                    if (datos.length != 3) {
                     lineaError += "Formato de linea incorrecto\n";
                     hayError = true;
                     erroresAlCargar = true;
-                } else {
-                    Empresa emp = modelo.getEmpresaPorRut(datos[0]);
-                    if (emp == null) {
-                        lineaError += "Rut de empresa no registrado\n";
-                        hayError = true;
-                        erroresAlCargar = true;
+                    } else {
+                        Empresa emp = modelo.getEmpresaPorRut(datos[0]);
+                        if (emp == null) {
+                            lineaError += "Rut de empresa no registrado\n";
+                            hayError = true;
+                            erroresAlCargar = true;
+                        }
+                        if (Integer.parseInt(datos[1]) < 1 || Integer.parseInt(datos[1]) > 4) {
+                            lineaError += "Tipo de alimento incorrecto\n";
+                            hayError = true;
+                            erroresAlCargar = true;
+                        }
+                        if (Integer.parseInt(datos[2]) <= 0) {
+                            lineaError += "Cantidad de alimento incorrecta\n";
+                            hayError = true;
+                            erroresAlCargar = true;
+                        }
                     }
-                    if (Integer.parseInt(datos[1]) < 1 || Integer.parseInt(datos[1]) > 4) {
-                        lineaError += "Tipo de alimento incorrecto\n";
-                        hayError = true;
-                        erroresAlCargar = true;
-                    }
-                    if (Integer.parseInt(datos[2]) <= 0) {
-                        lineaError += "Cantidad de alimento incorrecta\n";
+                } catch (NumberFormatException ex) {
+                    if (ex != null) {
+                        lineaError += "Campos numericos contienen texto\n";
                         hayError = true;
                         erroresAlCargar = true;
                     }
