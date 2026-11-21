@@ -4,6 +4,7 @@ package interfaz;
 
 import dominio.*;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 public class VentanaAltaFamilias extends javax.swing.JFrame {
 
@@ -114,11 +115,13 @@ public class VentanaAltaFamilias extends javax.swing.JFrame {
         }
         
         if(ok){
-            VentanaExitoRegistro vent = new VentanaExitoRegistro("FAMILIA");
-            vent.setVisible(true);
             Familia fam = new Familia(cedula, apellido, celular);
             modelo.agregarFamilia(fam);
-            dispose();
+            modelo.notificarObs();
+            JOptionPane.showMessageDialog(this,"¡¡Familia registrada con éxito!!","REGISTRO",1);
+        }
+        else {
+            JOptionPane.showMessageDialog(this,"Algún campo no es válido","ERROR",0);
         }
         modelo.notificarObs();
     }//GEN-LAST:event_btnCrearActionPerformed

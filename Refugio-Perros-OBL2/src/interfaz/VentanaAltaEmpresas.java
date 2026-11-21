@@ -4,6 +4,7 @@ package interfaz;
 
 import dominio.*;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 public class VentanaAltaEmpresas extends javax.swing.JFrame {
 
@@ -113,11 +114,13 @@ public class VentanaAltaEmpresas extends javax.swing.JFrame {
             ok = false;
         }
         if(ok){
-            VentanaExitoRegistro vent = new VentanaExitoRegistro("EMPRESA");
-            vent.setVisible(true);
+            JOptionPane.showMessageDialog(this,"¡¡Empresa registrada con éxito!!","REGISTRO",1);
             Empresa emp = new Empresa(nombre, rut, direccion);
             modelo.agregarEmpresa(emp);
             dispose();
+        }
+        else {
+            JOptionPane.showMessageDialog(this,"Algún campo no es válido","ERROR",0);
         }
         modelo.notificarObs();
     }//GEN-LAST:event_btnCrearActionPerformed

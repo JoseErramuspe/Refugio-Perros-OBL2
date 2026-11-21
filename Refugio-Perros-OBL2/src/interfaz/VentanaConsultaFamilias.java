@@ -14,10 +14,10 @@ public class VentanaConsultaFamilias extends javax.swing.JFrame implements Obser
         ordPorApe = porApellido;
         modelo.addObserver(this);
         modelo.ordenarFam(ordPorApe);
-        lstFamilias.setListData(listaTotal().toArray());
+        lstFamilias.setListData(listaConAdops().toArray());
     }
     
-    public ArrayList<String> listaTotal(){
+    public ArrayList<String> listaConAdops(){
         ArrayList<String> lista = new ArrayList<>();
         for(Familia fam: modelo.getListaFamilias()){
             String datos = "Familia: "+fam;
@@ -28,6 +28,7 @@ public class VentanaConsultaFamilias extends javax.swing.JFrame implements Obser
                 }
             }
             datos += " Adopciones: " +adopciones;
+            lista.add(datos);
         }
         return lista;
     }
@@ -35,7 +36,7 @@ public class VentanaConsultaFamilias extends javax.swing.JFrame implements Obser
     @Override
     public void update(Observable o, Object arg) {
         modelo.ordenarFam(ordPorApe);
-        lstFamilias.setListData(listaTotal().toArray());        
+        lstFamilias.setListData(listaConAdops().toArray());        
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

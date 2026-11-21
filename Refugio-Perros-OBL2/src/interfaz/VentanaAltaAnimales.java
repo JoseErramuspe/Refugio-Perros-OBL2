@@ -4,6 +4,7 @@ package interfaz;
 
 import dominio.*;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 public class VentanaAltaAnimales extends javax.swing.JFrame {
 
@@ -156,8 +157,6 @@ public class VentanaAltaAnimales extends javax.swing.JFrame {
             ok = false;
         }
         if(ok){
-            VentanaExitoRegistro vent = new VentanaExitoRegistro("ANIMAL");
-            vent.setVisible(true);
             Animal ani = new Animal(nombre, codigo, temp, peso, "Disponible para adoptar");
             if(rdNoDisp.isSelected()){
                 ani.cambiarEstado();
@@ -172,6 +171,10 @@ public class VentanaAltaAnimales extends javax.swing.JFrame {
             fldTemp.setText("");
             fldPeso.setText("");
             modelo.notificarObs();
+            JOptionPane.showMessageDialog(this, "¡¡Animal registrado con éxito!!","REGISTRO",1);
+        }
+        else {
+            JOptionPane.showMessageDialog(this,"Algún campo no es válido","ERROR",0);
         }
     }//GEN-LAST:event_btnCrearActionPerformed
 

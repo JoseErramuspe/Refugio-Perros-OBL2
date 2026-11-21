@@ -1,12 +1,14 @@
 // José Gabriel Erramuspe Rodríguez - 353422
 // Damián Agustín Torres Aramburu - 371643
 package interfaz;
+
 import dominio.*;
 import java.awt.Color;
 import java.util.*;
+import javax.swing.JOptionPane;
 
-public class VentanaCrearDonacion extends javax.swing.JFrame implements Observer{
-    
+public class VentanaCrearDonacion extends javax.swing.JFrame implements Observer {
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaCrearDonacion.class.getName());
 
     public VentanaCrearDonacion(Sistema sistema) {
@@ -15,13 +17,13 @@ public class VentanaCrearDonacion extends javax.swing.JFrame implements Observer
         modelo.addObserver(this);
         lstEmpresas.setListData(modelo.getListaEmpresas().toArray());
     }
-    
+
     @Override
     public void update(Observable o, Object arg) {
         lstEmpresas.setListData(modelo.getListaEmpresas().toArray());
     }
 
-   @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -100,20 +102,23 @@ public class VentanaCrearDonacion extends javax.swing.JFrame implements Observer
             if (cant <= 0) {
                 fldCant.setText("ERROR. La cantidad no puede ser nula o negativa");
                 fldCant.setForeground(Color.red);
+                JOptionPane.showMessageDialog(this, "La cantidad no puede ser nula o negativa", "ERROR", 0);
+            } else {
+                if (emp != null && tipo != null) {
+                    Donacion don = new Donacion(emp, Integer.parseInt(tipo.charAt(0) + ""), cant, modelo.getListaDonaciones().size() + 1);
+                    modelo.agregarDonacion(don);
+                    modelo.notificarObs();
+                    JOptionPane.showMessageDialog(this, "¡¡Donación registrada con éxito!!", "REGISTRO", 1);
+                } else {
+                    JOptionPane.showMessageDialog(this, "No se seleccionó empresa y/o tipo", "ERROR", 0);
+                }
             }
-            if(emp != null && tipo != null && cant > 0){
-                Donacion don = new Donacion(emp, Integer.parseInt(tipo.charAt(0)+""), cant, modelo.getListaDonaciones().size()+1);
-                modelo.agregarDonacion(don);
-                modelo.notificarObs();
-                VentanaExitoRegistro vent = new VentanaExitoRegistro("DONACION");
-                vent.setVisible(true);
-            }
-        }
-        catch (NumberFormatException e){
+
+        } catch (NumberFormatException e) {
             fldCant.setText("ERROR. No puede tener letras o ser vacío");
             fldCant.setForeground(Color.red);
+            JOptionPane.showMessageDialog(this, "Hay letras en el campo de cantidad o es vacío", "ERROR", 0);
         }
-        modelo.notificarObs();
     }//GEN-LAST:event_btnCrearActionPerformed
 
     private void fldCantKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fldCantKeyTyped
