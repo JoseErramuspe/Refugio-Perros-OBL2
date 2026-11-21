@@ -17,10 +17,10 @@ Hecho
 -Anular adopción
 -Importar donaciones
 -Consulta de familia
+-Consulta de donaciones
 
 Por hacer
--Consulta de donaciones (?)
--Video (Pepe)
+-Video (Pepe y Damián)
 
 Orden de facilidad
 -Autores
