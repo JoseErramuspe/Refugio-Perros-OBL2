@@ -108,4 +108,32 @@ public class Sistema extends Observable implements Serializable {
         setChanged();
         notifyObservers();
     }
+    
+    public void ordenarFam(boolean porApe){
+        if(porApe){
+            Collections.sort(listaFamilias);
+        }
+        else{
+            Collections.sort(listaFamilias,new OrdPorAdops());
+        }
+    }
+    
+    private class OrdPorAdops implements Comparator<Familia>{
+        @Override
+        public int compare(Familia fam1, Familia fam2){
+            int adops1 = 0;
+            int adops2 = 0;
+            for(Adopcion ad : listaAdopciones){
+                if(ad.getFamilia().equals(fam1)){
+                    adops1++;
+                }
+                else {
+                    if(ad.getFamilia().equals(fam2)){
+                        adops2++;
+                    }
+                }
+            }
+            return adops1-adops2;
+        }
+    }
 }

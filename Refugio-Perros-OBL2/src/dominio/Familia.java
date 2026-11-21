@@ -2,7 +2,7 @@ package dominio;
 
 import java.io.Serializable;
 
-public class Familia implements Serializable {
+public class Familia implements Serializable, Comparable<Familia> {
     private String cedulaTitular;
     private String apellido;
     private String celular;
@@ -40,5 +40,10 @@ public class Familia implements Serializable {
     @Override
     public String toString() {
         return this.apellido+" ("+this.cedulaTitular+")";
+    }
+
+    @Override
+    public int compareTo(Familia unaFam) {
+        return this.apellido.compareTo(unaFam.apellido);
     }
 }
