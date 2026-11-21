@@ -16,9 +16,9 @@ Hecho
 -Menú principal
 -Anular adopción
 -Importar donaciones
+-Consulta de familia
 
 Por hacer
--Consulta de familia (?)
 -Consulta de donaciones (?)
 -Video (Pepe)
 
