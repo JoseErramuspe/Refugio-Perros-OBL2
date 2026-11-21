@@ -99,7 +99,6 @@ public class VentanaGeneracionPagina extends javax.swing.JFrame {
         }
         try {
             ArchivoGrabacion arch = new ArchivoGrabacion(rutNom);
-            System.out.println(arch);
             arch.grabarLinea("<html>");
             arch.grabarLinea("<head>");
             arch.grabarLinea("<meta charset=\"utf-8\">");
@@ -108,25 +107,30 @@ public class VentanaGeneracionPagina extends javax.swing.JFrame {
             arch.grabarLinea("</head>");
             arch.grabarLinea("<body>");
             arch.grabarLinea("<h1>Reporte de adopciones</h1>");
-            arch.grabarLinea("<h3>Total de adopciones: " + modelo.getListaAdopciones().size() + "</h3>");
-            arch.grabarLinea("<table border=1px >");
-            arch.grabarLinea("<tr>");
-            arch.grabarLinea("<th>Número</th>");
-            arch.grabarLinea("<th>Código</th>");
-            arch.grabarLinea("<th>Animal</th>");
-            arch.grabarLinea("<th>Familia</th>");
-            arch.grabarLinea("<th>Comentarios</th>");
-            arch.grabarLinea("</tr>");
-            for (Adopcion ad : modelo.getListaAdopciones()) {
-                arch.grabarLinea("<tr>");
-                arch.grabarLinea("<td>"+ad.getNumero()+"</td>");
-                arch.grabarLinea("<td>"+ad.getAnimal().getCodigo()+"</td>");
-                arch.grabarLinea("<td>"+ad.getAnimal().getNombre()+"</td>");
-                arch.grabarLinea("<td>"+ad.getFamilia().getApellido()+"</td>");
-                arch.grabarLinea("<td>"+ad.getComentarios()+"</td>");
-                arch.grabarLinea("</tr>");
+            if(modelo.getListaAdopciones().isEmpty()){
+                arch.grabarLinea("<h3>No hay adopciones registradas</h3>");
             }
-            arch.grabarLinea("</table>");
+            else{
+                arch.grabarLinea("<h3>Total de adopciones: " + modelo.getListaAdopciones().size() + "</h3>");
+                arch.grabarLinea("<table border=1px >");
+                arch.grabarLinea("<tr>");
+                arch.grabarLinea("<th>Número</th>");
+                arch.grabarLinea("<th>Código</th>");
+                arch.grabarLinea("<th>Animal</th>");
+                arch.grabarLinea("<th>Familia</th>");
+                arch.grabarLinea("<th>Comentarios</th>");
+                arch.grabarLinea("</tr>");
+                for (Adopcion ad : modelo.getListaAdopciones()) {
+                    arch.grabarLinea("<tr>");
+                    arch.grabarLinea("<td>"+ad.getNumero()+"</td>");
+                    arch.grabarLinea("<td>"+ad.getAnimal().getCodigo()+"</td>");
+                    arch.grabarLinea("<td>"+ad.getAnimal().getNombre()+"</td>");
+                    arch.grabarLinea("<td>"+ad.getFamilia().getApellido()+"</td>");
+                    arch.grabarLinea("<td>"+ad.getComentarios()+"</td>");
+                    arch.grabarLinea("</tr>");
+                }
+                arch.grabarLinea("</table>");
+            }
             arch.grabarLinea("</body>");
             arch.grabarLinea("</html>");
             arch.cerrar();
