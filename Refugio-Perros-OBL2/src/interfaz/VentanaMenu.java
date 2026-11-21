@@ -349,7 +349,8 @@ public class VentanaMenu extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_botonAnularAdopcionActionPerformed
 
     private void botonImportarDonacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonImportarDonacionesActionPerformed
-        // TODO add your handling code here:
+        VentanaImportarDonaciones vent = new VentanaImportarDonaciones(modelo);
+        vent.setVisible(true);
     }//GEN-LAST:event_botonImportarDonacionesActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

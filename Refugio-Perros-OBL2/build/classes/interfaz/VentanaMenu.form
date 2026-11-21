@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[400, 300]"/>
+    </Property>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,87,0,0,1,-7"/>
+    <SyntheticProperty name="formPosition" type="java.awt.Point" value="-84,-19,0,5,115,114,0,14,106,97,118,97,46,97,119,116,46,80,111,105,110,116,-74,-60,-118,114,52,126,-56,38,2,0,2,73,0,1,120,73,0,1,121,120,112,0,0,0,0,0,0,0,0"/>
+    <SyntheticProperty name="formSizePolicy" type="int" value="0"/>
+    <SyntheticProperty name="generatePosition" type="boolean" value="true"/>
+    <SyntheticProperty name="generateSize" type="boolean" value="true"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowClosed" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosed"/>
+    <EventHandler event="windowClosing" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosing"/>
+  </Events>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="3"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="botonRegistrarAdopcion" alignment="0" pref="153" max="32767" attributes="0"/>
+                                  <Component id="botonRegistrarAnimal" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="botonRegistrarEmpresa" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="botonRegistrarFamilia" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="botonRecuperarDatos" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="botonAnularAdopcion" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="botonCambiarEstados" alignment="0" pref="153" max="32767" attributes="0"/>
+                                  <Component id="botonRegistrarDonacion" alignment="0" pref="153" max="32767" attributes="0"/>
+                                  <Component id="botonImportarDonaciones" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="32" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="TA" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="AD" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="AND" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="AR" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="AE" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ER" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="APG" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="APC" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="APA" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="botonGenerarPagina" min="-2" pref="153" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="OA" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="Autores" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="botonSalir" min="-2" pref="75" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="botonRegistrarAnimal" min="-2" max="-2" attributes="0"/>
+                  <Component id="TA" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="botonRegistrarEmpresa" min="-2" max="-2" attributes="0"/>
+                  <Component id="AD" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="botonRegistrarFamilia" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="AND" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="AE" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="botonRegistrarDonacion" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="AR" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="botonRegistrarAdopcion" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="ER" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="botonAnularAdopcion" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="APG" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="botonCambiarEstados" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="APC" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="botonImportarDonaciones" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="APA" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="botonRecuperarDatos" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="OA" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="botonGenerarPagina" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="botonSalir" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Autores" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="85" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="18" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="HOGAR ANIMALES"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="botonRegistrarAnimal">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Registrar Animal"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonRegistrarAnimalActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="botonRegistrarEmpresa">
+      <Properties>
+        <Property name="label" type="java.lang.String" value="Registrar Empresa"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonRegistrarEmpresaActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="botonRegistrarFamilia">
+      <Properties>
+        <Property name="label" type="java.lang.String" value="Registrar Familia"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonRegistrarFamiliaActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="botonRegistrarAdopcion">
+      <Properties>
+        <Property name="label" type="java.lang.String" value="Registrar Adopcion"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonRegistrarAdopcionActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="botonRegistrarDonacion">
+      <Properties>
+        <Property name="label" type="java.lang.String" value="Registrar Donacion"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonRegistrarDonacionActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="botonSalir">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Salir"/>
+        <Property name="alignmentX" type="float" value="0.5"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonSalirActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="botonCambiarEstados">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cambiar Estados"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonCambiarEstadosActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="Autores">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Autores"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AutoresActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="botonRecuperarDatos">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Recuperar Datos"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonRecuperarDatosActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="TA">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Total Animales:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="botonGenerarPagina">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Generar Pagina"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonGenerarPaginaActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="AD">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Animales Disponibles:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="AND">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Animales No Disponibles:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="AR">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Adopciones Registradas:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="AE">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Animales Entregados:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="ER">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Empresas Registradas:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="APG">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Alimento Para Grandes:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="APC">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Alimento Para Chicos:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="APA">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Alimento Para Adultos:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="OA">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Otros Alimentos:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="botonAnularAdopcion">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Anular Adopcion"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAnularAdopcionActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="botonImportarDonaciones">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Importar Donaciones"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonImportarDonacionesActionPerformed"/>
+      </Events>
+    </Component>
+  </SubComponents>
+</Form>

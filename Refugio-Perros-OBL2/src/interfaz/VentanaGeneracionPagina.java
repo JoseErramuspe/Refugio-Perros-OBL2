@@ -99,6 +99,7 @@ public class VentanaGeneracionPagina extends javax.swing.JFrame {
         }
         try {
             ArchivoGrabacion arch = new ArchivoGrabacion(rutNom);
+            System.out.println(arch);
             arch.grabarLinea("<html>");
             arch.grabarLinea("<head>");
             arch.grabarLinea("<meta charset=\"utf-8\">");

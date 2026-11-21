@@ -94,6 +94,16 @@ public class Sistema extends Observable implements Serializable {
         this.listaAdopciones.remove(adopcion);
     }
     
+    public Empresa getEmpresaPorRut(String rutBuscado) {
+        Empresa buscada = null;
+        for (Empresa emp : this.listaEmpresas) {
+            if (buscada == null && emp.getRut().equals(rutBuscado)) {
+                buscada = emp;
+            }
+        }
+        return buscada;
+    }
+    
     public void notificarObs(){
         setChanged();
         notifyObservers();

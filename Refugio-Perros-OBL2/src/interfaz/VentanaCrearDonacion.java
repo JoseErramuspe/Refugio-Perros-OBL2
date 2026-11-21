@@ -95,10 +95,16 @@ public class VentanaCrearDonacion extends javax.swing.JFrame implements Observer
         int cant = 0;
         try {
             cant = Integer.parseInt(fldCant.getText());
-            if(emp != null && tipo != null){
+            if (cant <= 0) {
+                fldCant.setText("ERROR. La cantidad no puede ser nula o negativa");
+                fldCant.setForeground(Color.red);
+            }
+            if(emp != null && tipo != null && cant > 0){
                 Donacion don = new Donacion(emp, Integer.parseInt(tipo.charAt(0)+""), cant, modelo.getListaDonaciones().size()+1);
                 modelo.agregarDonacion(don);
                 modelo.notificarObs();
+                VentanaExitoRegistro vent = new VentanaExitoRegistro("DONACION");
+                vent.setVisible(true);
             }
         }
         catch (NumberFormatException e){
