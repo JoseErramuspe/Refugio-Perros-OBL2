@@ -1,7 +1,5 @@
 # Refugio-Perros-OBL2
 
-El registro de adopciones muestra animales que no están disponibles para adoptar o que ya estan adoptados
-
 Hecho
 -Alta animales
 -Alta familias
