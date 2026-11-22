@@ -50,6 +50,11 @@ public class VentanaCambioEstado extends javax.swing.JFrame implements Observer 
 
     @Override
     public void update(Observable o, Object arg) {
+        lblNombre.setText("Nombre: ");
+        lblCodigo.setText("Código: ");
+        lblTemp.setText("Temperamento: ");
+        lblPeso.setText("Peso: ");
+        lblEstado.setText("Estado: ");
         lstAnimales.setListData(this.noEntregados().toArray());
         lstAnimales.setCellRenderer(new DefaultListCellRenderer() {
             @Override
@@ -134,15 +139,14 @@ public class VentanaCambioEstado extends javax.swing.JFrame implements Observer 
     }// </editor-fold>//GEN-END:initComponents
 
     private void lstAnimalesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstAnimalesValueChanged
-        if (terminoCargar) {
-            Animal ani = (Animal) lstAnimales.getSelectedValue();
-            if (ani != null) {
-                lblNombre.setText("Nombre: " + ani.getNombre());
-                lblCodigo.setText("Código: " + ani.getCodigo());
-                lblTemp.setText("Temperamento: " + ani.getTemperamento());
-                lblPeso.setText("Peso: " + ani.getPeso());
-                lblEstado.setText("Estado: " + ani.getEstado());
-            }
+
+        Animal ani = (Animal) lstAnimales.getSelectedValue();
+        if (ani != null) {
+            lblNombre.setText("Nombre: " + ani.getNombre());
+            lblCodigo.setText("Código: " + ani.getCodigo());
+            lblTemp.setText("Temperamento: " + ani.getTemperamento());
+            lblPeso.setText("Peso: " + ani.getPeso());
+            lblEstado.setText("Estado: " + ani.getEstado());
         }
     }//GEN-LAST:event_lstAnimalesValueChanged
 
@@ -150,16 +154,10 @@ public class VentanaCambioEstado extends javax.swing.JFrame implements Observer 
         Animal ani = (Animal) lstAnimales.getSelectedValue();
         if (ani != null) {
             ani.cambiarEstado();
-            lblNombre.setText("Nombre: ");
-            lblCodigo.setText("Código: ");
-            lblTemp.setText("Temperamento: ");
-            lblPeso.setText("Peso: ");
-            lblEstado.setText("Estado: ");
             modelo.notificarObs();
-            JOptionPane.showMessageDialog(this,"¡¡Cambio exitoso!!", "CAMBIO", 1);
-        }
-        else {
-            JOptionPane.showMessageDialog(this,"No se seleccionó un animal", "ERROR", 0);
+            JOptionPane.showMessageDialog(this, "¡¡Cambio exitoso!!", "CAMBIO", 1);
+        } else {
+            JOptionPane.showMessageDialog(this, "No se seleccionó un animal", "ERROR", 0);
         }
     }//GEN-LAST:event_btnCambiarActionPerformed
 
@@ -174,6 +172,5 @@ public class VentanaCambioEstado extends javax.swing.JFrame implements Observer 
     private javax.swing.JList lstAnimales;
     // End of variables declaration//GEN-END:variables
     private Sistema modelo;
-    private boolean terminoCargar;
 
 }
