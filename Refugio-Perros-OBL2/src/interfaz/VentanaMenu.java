@@ -51,6 +51,7 @@ public class VentanaMenu extends javax.swing.JFrame implements Observer {
         this.APC.setText("Alimento Para Chicos: " + datos[7] + "kg");
         this.APA.setText("Alimento Para Adultos: " + datos[8] + "kg");
         this.OA.setText("Otros Alimentos: " + datos[9] + "kg");
+        lstAnimales.setListData(modelo.getListaAnimales().toArray());
         lstAnimales.setCellRenderer(new DefaultListCellRenderer() {
             @Override
             public Component getListCellRendererComponent(
