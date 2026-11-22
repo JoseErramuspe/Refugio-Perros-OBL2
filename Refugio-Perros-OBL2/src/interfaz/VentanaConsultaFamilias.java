@@ -45,6 +45,7 @@ public class VentanaConsultaFamilias extends javax.swing.JFrame implements Obser
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         lstFamilias = new javax.swing.JList();
+        btnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -64,10 +65,20 @@ public class VentanaConsultaFamilias extends javax.swing.JFrame implements Obser
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(50, 70, 250, 200);
 
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(this::btnSalirActionPerformed);
+        getContentPane().add(btnSalir);
+        btnSalir.setBounds(130, 283, 100, 30);
+
         setBounds(0, 0, 414, 336);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList lstFamilias;
