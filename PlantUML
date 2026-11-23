@@ -1,4 +1,4 @@
-//www.plantuml.com/plantuml/png/XLJB3jCm4BpdAtnCrVO78bGr4d3YLdvWcvXgXH-HxI0XnB-Ju9tYM8curDd9k3ixi-qz9WffjgOP3CMe7XoJjgH-DKgfCyhsj9PNPPQIUiUMZ8wgKtq8zFFB0dx8uAsWVIRBXcbB4x3aVR9JqB7Y2LZo-j5F0tjNDGPSKZzwHpjKmBSyMz2l1GqKilOs7wVboW_FOyKHuQsS1ooHtSfvm8Ba5Wy7FEXjvQ7YaPlDVx-CxUH3el3FalPD-Dr8w7boP2vsF59Wzxge-cINKCXME6-VGQjEq0mEVkINhy2axQG3MUrI_MhISONOfLphc6ZSaivg8FlanUQ_xtO6aNHa4fJxeq3zeCVPq5TEgvkLA9gqCLp8m1Mp9Ry5IF0Y0EMnW4FxmfmgPEIWXpN2dRR87drHoqvVu4JLcNBkdKIUmM_YOOTBo7DDZGBxk2C0wmK1gF5BaBN1X_JN-ULATcbrGDYoB3pvtZ2MvRqPtzduM02oQe8iacIThrUF_wz6HjbWoAh4ODm6n317p1lyAp5nJsu3n81txSRPcZy0
+//www.plantuml.com/plantuml/png/XLJ1RjGm4BtlL_YOGlS7LcZLbO0J4gZbXZZCnjF8mlP4jeE44FzEiddJ95QZNjQPvpUUDvxdVSY5KXc2FxIUSZPFBXSEPFuUZ37lDMpkfl1e_1ZI9Rf0dhCvcKjAzEVB27wOmVEAzfc2yuwsD81htgVG9yuL3-2QTx7IjqvYNHZmclfH8hr2LVWyzvQu6z54QTRUpClTcF9RdAqu4DvWtM51TeDrXwMI6_tOuQdU1XyLZ-BWtppCXLvIMSxYt6m9aYp7Mt_DLSGpLGTOAf8V-NdedDnINIm_Va81d32LBdJrEBns1Uwxuu9x-IRfSIZDKqakTbC6yCE_0spuDTcHD9sRrOgjX9uIwmJk3JwWQScTYo8D4MhTcteTCpM0nwE4Qs9p0Zg3hLZNIGKM3Zqd2XnBlTLp5kYwnPmBsOM4ZYXStMYQszuo5cr46zHE4Ewq0lKjsy7JTrScRrIYg6VltLe6KloMh08m5XM0S5_0_lMbeLI8TOdRoP2lb5KdQrsDyK9V9h-j33UQ4qO-Wy-umvCcwJodgL5oaYjXSGYSfFQKFX-LfB6-T1X9Vw28vys970ilFeTzN2yNxs2VnIk_d9SCO6i-I8B1ZqVH_-S3cjjWABR1z2ete3QpnppZHhSOIY8Re3QuUhyZ_kxbr0UETWZ-Fm00
 
 @startuml
 class Sistema {
@@ -15,6 +15,14 @@ class Sistema {
    + registrarDonacion(Donacion) : void
    + anularAdopcion(Adopcion) : void
    + importarDonaciones() : void
+   + ordenarFam(boolean) : void
+   + datosRefugio() : int[]
+   + animalesAdoptables() : ArrayList<Animal>
+   + getEmpresaPorRut(String) : Empresa
+}
+
+class OrdPorAdops {
+   + compare(Familia, Familia) : int
 }
 
 class Animal {
@@ -46,6 +54,7 @@ class Adopcion {
    - animal : Animal
    - familia : Familia
    - comentarios : String
+   - numero : int
 }
 
 class Donacion {
@@ -64,4 +73,5 @@ Donacion --o Sistema
 Adopcion --> Animal
 Adopcion --> Familia
 Donacion --> Empresa
+OrdPorAdops --* Sistema
 @enduml
