@@ -148,4 +148,30 @@ public class Sistema extends Observable implements Serializable {
             return adops1-adops2;
         }
     }
+    
+    public ArrayList<Animal> noEntregados() {
+        ArrayList<Animal> listaNoEntre = new ArrayList<>();
+        for (Animal ani : this.getListaAnimales()) {
+            if (!ani.getEstado().equals("Entregado")) {
+                listaNoEntre.add(ani);
+            }
+        }
+        return listaNoEntre;
+    }
+    
+    public ArrayList<String> famConAdops(){
+        ArrayList<String> lista = new ArrayList<>();
+        for(Familia fam: this.getListaFamilias()){
+            String datos = "Familia: "+fam;
+            int adopciones = 0;
+            for(Adopcion ad : this.getListaAdopciones()){
+                if(ad.getFamilia().equals(fam)){
+                    adopciones++;
+                }
+            }
+            datos += " Adopciones: " +adopciones;
+            lista.add(datos);
+        }
+        return lista;
+    }
 }

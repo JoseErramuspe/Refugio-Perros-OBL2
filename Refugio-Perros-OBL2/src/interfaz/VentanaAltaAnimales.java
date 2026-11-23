@@ -161,11 +161,7 @@ public class VentanaAltaAnimales extends javax.swing.JFrame {
             if(rdNoDisp.isSelected()){
                 ani.cambiarEstado();
             }
-            System.out.println("Antes de agregar el animal:");
-            System.out.println(modelo.getListaAnimales());
             modelo.agregarAnimal(ani);
-            System.out.println("Despues de agregar el animal:");
-            System.out.println(modelo.getListaAnimales());
             fldCodigo.setText("");
             fldNombre.setText("");
             fldTemp.setText("");

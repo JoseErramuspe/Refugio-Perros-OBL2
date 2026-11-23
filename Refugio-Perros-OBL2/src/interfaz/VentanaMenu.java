@@ -45,7 +45,7 @@ public class VentanaMenu extends javax.swing.JFrame implements Observer {
         this.AD.setText("Animales Disponibles: " + datos[1]);
         this.AND.setText("Animales No Disponibles: " + datos[2]);
         this.AE.setText("Animales Entregados: " + datos[3]);
-        this.AR.setText("Adopciones Registrados: " + datos[4]);
+        this.AR.setText("Adopciones Registradas: " + datos[4]);
         this.ER.setText("Empresas Registradas: " + datos[5]);
         this.APG.setText("Alimento Para Grandes: " + datos[6] + "kg");
         this.APC.setText("Alimento Para Chicos: " + datos[7] + "kg");
@@ -108,6 +108,7 @@ public class VentanaMenu extends javax.swing.JFrame implements Observer {
         botonConsultarDonaciones = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         lstAnimales = new javax.swing.JList();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -192,6 +193,9 @@ public class VentanaMenu extends javax.swing.JFrame implements Observer {
         });
         jScrollPane1.setViewportView(lstAnimales);
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setText("Lista de animales");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -212,7 +216,7 @@ public class VentanaMenu extends javax.swing.JFrame implements Observer {
                                     .addComponent(botonCambiarEstados, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
                                     .addComponent(botonRegistrarDonacion, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
                                     .addComponent(botonImportarDonaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(TA, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(AD, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -231,8 +235,10 @@ public class VentanaMenu extends javax.swing.JFrame implements Observer {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(OA)))
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(botonConsultarFamilias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -284,6 +290,8 @@ public class VentanaMenu extends javax.swing.JFrame implements Observer {
                             .addComponent(botonImportarDonaciones))
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(9, 9, 9)))
@@ -403,7 +411,7 @@ public class VentanaMenu extends javax.swing.JFrame implements Observer {
     }//GEN-LAST:event_botonImportarDonacionesActionPerformed
 
     private void botonConsultarFamiliasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarFamiliasActionPerformed
-        VentanaConsultaFamilias vent = new VentanaConsultaFamilias(modelo, true);
+        VentanaConsultaFamilias vent = new VentanaConsultaFamilias(modelo);
         vent.setVisible(true);
     }//GEN-LAST:event_botonConsultarFamiliasActionPerformed
 
@@ -439,6 +447,7 @@ public class VentanaMenu extends javax.swing.JFrame implements Observer {
     private javax.swing.JButton botonRegistrarFamilia;
     private javax.swing.JButton botonSalir;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList lstAnimales;
     // End of variables declaration//GEN-END:variables

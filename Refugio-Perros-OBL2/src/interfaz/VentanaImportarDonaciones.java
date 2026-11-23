@@ -108,16 +108,13 @@ public class VentanaImportarDonaciones extends javax.swing.JFrame {
                         }
                     }
                 } catch (NumberFormatException ex) {
-                    if (ex != null) {
-                        lineaError += "Campos numericos contienen texto\n";
-                        hayError = true;
-                        erroresAlCargar = true;
-                    }
+                    lineaError += "Campos numericos contienen texto\n";
+                    hayError = true;
+                    erroresAlCargar = true;
                 }
                 lineaError += "\n";
                 if (hayError) {
                     if (rutaArchivoErrores.equals("")) {
-                        File archivoGuardado = new File(ruta);
                         rutaArchivoErrores = ruta.substring(0, ruta.lastIndexOf(".")) + "Error.txt";
                         out = new ArchivoGrabacion(rutaArchivoErrores);
                     }
@@ -128,7 +125,6 @@ public class VentanaImportarDonaciones extends javax.swing.JFrame {
                 }
             }
             modelo.notificarObs();
-            this.dispose();
             if (!rutaArchivoErrores.equals("")) {
                 out.cerrar();
                 int cargar = JOptionPane.showConfirmDialog(this, "Existieron errores al cargar datos, ¿visualizar errores?", "Error", 1);
@@ -140,7 +136,7 @@ public class VentanaImportarDonaciones extends javax.swing.JFrame {
                     }
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "No hubieron errores al cargar datos", "Exito", 0);
+                JOptionPane.showMessageDialog(this, "No hubieron errores al cargar datos", "Exito", 1);
             }
         }
     }//GEN-LAST:event_botonImportarActionPerformed

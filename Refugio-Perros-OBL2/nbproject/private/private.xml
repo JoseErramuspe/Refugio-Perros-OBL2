@@ -3,8 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/damia/Documents/NetBeansProjects/Refugio-Perros-OBL2-2/src/interfaz/VentanaConsultaFamilias.java</file>
-            <file>file:/C:/Users/damia/Documents/NetBeansProjects/Refugio-Perros-OBL2-2/src/interfaz/VentanaCrearDonacion.java</file>
+            <file>file:/C:/Users/damia/Documents/NetBeansProjects/Refugio-Perros-OBL2/src/main/RefugioPerrosOBL2.java</file>
+            <file>file:/C:/Users/damia/Documents/NetBeansProjects/Refugio-Perros-OBL2/src/interfaz/VentanaImportarDonaciones.java</file>
+            <file>file:/C:/Users/damia/Documents/NetBeansProjects/Refugio-Perros-OBL2/src/interfaz/VentanaConsultaFamilias.java</file>
+            <file>file:/C:/Users/damia/Documents/NetBeansProjects/Refugio-Perros-OBL2/src/interfaz/VentanaMenu.java</file>
+            <file>file:/C:/Users/damia/Documents/NetBeansProjects/Refugio-Perros-OBL2/src/dominio/Sistema.java</file>
+            <file>file:/C:/Users/damia/Documents/NetBeansProjects/Refugio-Perros-OBL2/src/interfaz/VentanaGeneracionPagina.java</file>
+            <file>file:/C:/Users/damia/Documents/NetBeansProjects/Refugio-Perros-OBL2/src/interfaz/VentanaAutores.java</file>
         </group>
     </open-files>
 </project-private>

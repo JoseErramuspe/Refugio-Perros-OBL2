@@ -22,6 +22,8 @@ public class VentanaCrearAdopcion extends javax.swing.JFrame implements Observer
     public void update(Observable o, Object arg) {
         lstAnimales.setListData(modelo.animalesAdoptables().toArray());
         lstFamilias.setListData(modelo.getListaFamilias().toArray());
+        lblTemp.setText("Temperamento: ");
+        lblPeso.setText("Peso: ");
     }
 
     @SuppressWarnings("unchecked")
@@ -107,7 +109,7 @@ public class VentanaCrearAdopcion extends javax.swing.JFrame implements Observer
         Familia fam = (Familia) lstFamilias.getSelectedValue();
         String com = fldComen.getText();
         if(ani != null && fam != null){
-            Adopcion adop = new Adopcion(ani,fam,com,modelo.getListaAdopciones().size()+1);
+            Adopcion adop = new Adopcion(ani,fam,com);
             ani.setEstado("Entregado");
             modelo.agregarAdopcion(adop);
             modelo.notificarObs();
@@ -140,5 +142,4 @@ public class VentanaCrearAdopcion extends javax.swing.JFrame implements Observer
     private javax.swing.JList lstFamilias;
     // End of variables declaration//GEN-END:variables
     private Sistema modelo;
-
 }

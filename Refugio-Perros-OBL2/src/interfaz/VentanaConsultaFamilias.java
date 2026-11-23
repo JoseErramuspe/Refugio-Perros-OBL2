@@ -8,44 +8,31 @@ public class VentanaConsultaFamilias extends javax.swing.JFrame implements Obser
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaConsultaFamilias.class.getName());
 
-    public VentanaConsultaFamilias(Sistema sistema, boolean porApellido) {
+    public VentanaConsultaFamilias(Sistema sistema) {
         initComponents();
         modelo = sistema;
-        ordPorApe = porApellido;
         modelo.addObserver(this);
-        modelo.ordenarFam(ordPorApe);
-        lstFamilias.setListData(listaConAdops().toArray());
-    }
-    
-    public ArrayList<String> listaConAdops(){
-        ArrayList<String> lista = new ArrayList<>();
-        for(Familia fam: modelo.getListaFamilias()){
-            String datos = "Familia: "+fam;
-            int adopciones = 0;
-            for(Adopcion ad : modelo.getListaAdopciones()){
-                if(ad.getFamilia().equals(fam)){
-                    adopciones++;
-                }
-            }
-            datos += " Adopciones: " +adopciones;
-            lista.add(datos);
-        }
-        return lista;
+        rdApellido.setSelected(true);
+        modelo.ordenarFam(true);
+        lstFamilias.setListData(modelo.famConAdops().toArray());
     }
 
     @Override
     public void update(Observable o, Object arg) {
-        modelo.ordenarFam(ordPorApe);
-        lstFamilias.setListData(listaConAdops().toArray());        
+        modelo.ordenarFam(rdApellido.isSelected());
+        lstFamilias.setListData(modelo.famConAdops().toArray());        
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         lstFamilias = new javax.swing.JList();
         btnSalir = new javax.swing.JButton();
+        rdApellido = new javax.swing.JRadioButton();
+        rdAdopciones = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -70,19 +57,48 @@ public class VentanaConsultaFamilias extends javax.swing.JFrame implements Obser
         getContentPane().add(btnSalir);
         btnSalir.setBounds(130, 283, 100, 30);
 
-        setBounds(0, 0, 414, 336);
+        buttonGroup1.add(rdApellido);
+        rdApellido.setText("Por apellido");
+        rdApellido.addItemListener(this::rdApellidoItemStateChanged);
+        rdApellido.addActionListener(this::rdApellidoActionPerformed);
+        getContentPane().add(rdApellido);
+        rdApellido.setBounds(320, 90, 120, 21);
+
+        buttonGroup1.add(rdAdopciones);
+        rdAdopciones.setText("Por adopciones");
+        rdAdopciones.addActionListener(this::rdAdopcionesActionPerformed);
+        getContentPane().add(rdAdopciones);
+        rdAdopciones.setBounds(320, 150, 120, 21);
+
+        setBounds(0, 0, 461, 356);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
+    private void rdApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdApellidoActionPerformed
+        modelo.ordenarFam(true);
+        lstFamilias.setListData(modelo.famConAdops().toArray());
+    }//GEN-LAST:event_rdApellidoActionPerformed
+
+    private void rdAdopcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdAdopcionesActionPerformed
+        modelo.ordenarFam(false);
+        lstFamilias.setListData(modelo.famConAdops().toArray());
+    }//GEN-LAST:event_rdAdopcionesActionPerformed
+
+    private void rdApellidoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rdApellidoItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdApellidoItemStateChanged
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalir;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList lstFamilias;
+    private javax.swing.JRadioButton rdAdopciones;
+    private javax.swing.JRadioButton rdApellido;
     // End of variables declaration//GEN-END:variables
     private Sistema modelo;
-    private boolean ordPorApe;
 }

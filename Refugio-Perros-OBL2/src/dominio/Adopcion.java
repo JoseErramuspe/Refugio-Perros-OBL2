@@ -9,12 +9,14 @@ public class Adopcion implements Serializable {
     private Familia familia;
     private String comentarios;
     private int numero;
+    private static int ultNumero;
 
-    public Adopcion(Animal animal, Familia familia, String comentarios, int numero) {
+    public Adopcion(Animal animal, Familia familia, String comentarios) {
         this.animal = animal;
         this.familia = familia;
         this.comentarios = comentarios;
-        this.numero = numero;
+        ultNumero++;
+        this.numero = ultNumero;
     }
 
     public Animal getAnimal() {

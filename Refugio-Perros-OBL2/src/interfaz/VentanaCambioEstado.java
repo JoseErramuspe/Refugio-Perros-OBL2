@@ -14,7 +14,7 @@ public class VentanaCambioEstado extends javax.swing.JFrame implements Observer 
     public VentanaCambioEstado(Sistema sistema) {
         initComponents();
         modelo = sistema;
-        lstAnimales.setListData(this.noEntregados().toArray());
+        lstAnimales.setListData(modelo.noEntregados().toArray());
         lstAnimales.setCellRenderer(new DefaultListCellRenderer() {
             @Override
             public Component getListCellRendererComponent(
@@ -38,15 +38,7 @@ public class VentanaCambioEstado extends javax.swing.JFrame implements Observer 
         modelo.addObserver(this);
     }
 
-    public ArrayList<Animal> noEntregados() {
-        ArrayList<Animal> listaNoEntre = new ArrayList<>();
-        for (Animal ani : modelo.getListaAnimales()) {
-            if (!ani.getEstado().equals("Entregado")) {
-                listaNoEntre.add(ani);
-            }
-        }
-        return listaNoEntre;
-    }
+    
 
     @Override
     public void update(Observable o, Object arg) {
@@ -55,7 +47,7 @@ public class VentanaCambioEstado extends javax.swing.JFrame implements Observer 
         lblTemp.setText("Temperamento: ");
         lblPeso.setText("Peso: ");
         lblEstado.setText("Estado: ");
-        lstAnimales.setListData(this.noEntregados().toArray());
+        lstAnimales.setListData(modelo.noEntregados().toArray());
         lstAnimales.setCellRenderer(new DefaultListCellRenderer() {
             @Override
             public Component getListCellRendererComponent(
@@ -139,7 +131,6 @@ public class VentanaCambioEstado extends javax.swing.JFrame implements Observer 
     }// </editor-fold>//GEN-END:initComponents
 
     private void lstAnimalesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstAnimalesValueChanged
-
         Animal ani = (Animal) lstAnimales.getSelectedValue();
         if (ani != null) {
             lblNombre.setText("Nombre: " + ani.getNombre());

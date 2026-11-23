@@ -90,39 +90,41 @@ public class VentanaAltaEmpresas extends javax.swing.JFrame {
         String rut = fldRut.getText();
         String direccion = fldDireccion.getText();
         boolean ok = true;
-        if(nombre.equals("") || nombre.startsWith("ERROR")){
+        if(nombre.equals("") || nombre.equals("ERROR. No puede ser vacío")){
             fldNombre.setText("ERROR. No puede ser vacío");
             fldNombre.setForeground(Color.red);
             ok = false;
         }
-        if (rut.equals("") || rut.startsWith("ERROR")) {
+        if (rut.equals("") || rut.equals("ERROR. No puede ser vacío")) {
             fldRut.setText("ERROR. No puede ser vacío");
             fldRut.setForeground(Color.red);
             ok = false;
         } else {
             for (Empresa emp : modelo.getListaEmpresas()) {
-                if ((emp.getRut().equals(rut))) {
+                if ((emp.getRut().equals(rut)) || rut.equals("ERROR. Debe ser único")) {
                     fldRut.setText("ERROR. Debe ser único");
                     fldRut.setForeground(Color.red);
                     ok = false;
                 }
             }
         }
-        if (direccion.equals("") || direccion.startsWith("ERROR")) {
+        if (direccion.equals("") || direccion.equals("ERROR. No puede ser vacío")) {
             fldDireccion.setText("ERROR. No puede ser vacío");
             fldDireccion.setForeground(Color.red);
             ok = false;
         }
         if(ok){
-            JOptionPane.showMessageDialog(this,"¡¡Empresa registrada con éxito!!","REGISTRO",1);
             Empresa emp = new Empresa(nombre, rut, direccion);
             modelo.agregarEmpresa(emp);
-            dispose();
+            modelo.notificarObs();
+            JOptionPane.showMessageDialog(this,"¡¡Empresa registrada con éxito!!","REGISTRO",1);
+            fldNombre.setText("");
+            fldRut.setText("");
+            fldDireccion.setText("");
         }
         else {
             JOptionPane.showMessageDialog(this,"Algún campo no es válido","ERROR",0);
         }
-        modelo.notificarObs();
     }//GEN-LAST:event_btnCrearActionPerformed
 
     private void fldNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fldNombreKeyTyped
